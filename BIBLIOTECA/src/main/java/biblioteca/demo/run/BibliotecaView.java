@@ -40,31 +40,29 @@ import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JEditorPane;
+import javax.swing.UIManager;
 
 public class BibliotecaView {
 	
 	protected JFrame frmBiblioteca; // es un componente de la ventana, define el contenedor de la biblioteca
-	private JTextField textField;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_8;
-	private JScrollPane scrollPane_1;
-	private JTextField textField_20;
-	private JTextField textField_1;
-	private JTable table;
+	private JTextField textField_18;
+	private JTextField textField_21;
+	private JTextField textField_24;
+	private JTextField textField_25;
+	private JTextField textField_26;
+	private JTable table_2;
+	private JTextField textField_27;
+	private JTextField textField_28;
+	private JTextField textField_29;
 	private JTextField textField_31;
-	private JTextField textField_32;
-	private JTextField textField_33;
-	private JTextField textField_34;
 	private JTable table_1;
-	private JTextField textField_35;
 	private JTextField textField_19;
 	private JTextField textField_22;
 	private JTextField textField_23;
-	private JTextField textField_36;
+	private JTextField textField_32;
+	private JTextField textField;
+	private JTable table;
 		
 	public BibliotecaView() {		// inicializamos la biblioteca
 		initialize ();
@@ -73,532 +71,569 @@ public class BibliotecaView {
 	private void initialize() {
 		
 		frmBiblioteca = new JFrame();
+		frmBiblioteca.setBackground(new Color(0, 0, 255));
+		frmBiblioteca.setTitle("Gestion de BIBLIOTECA");
+		frmBiblioteca.setResizable(false);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		frmBiblioteca.getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		
+		JPanel inventario = new JPanel();
+		tabbedPane.addTab("           INVENTARIO          ", null, inventario, null);
+		inventario.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		
+		JLabel lblInventario_2_1 = new JLabel("INVENTARIO");
+		lblInventario_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		textField_18 = new JTextField();
+		textField_18.setText("< Introduzca la Edicion >");
+		textField_18.setColumns(10);
+		
+		textField_21 = new JTextField();
+		textField_21.setText("< Introduzca el ISBN del libro >");
+		textField_21.setColumns(10);
+		
+		textField_24 = new JTextField();
+		textField_24.setText("< Introduzca el Titulo >");
+		textField_24.setColumns(10);
+		
+		textField_25 = new JTextField();
+		textField_25.setText("< Introduzca el Autor >");
+		textField_25.setColumns(10);
+		
+		JLabel lblNewLabel_5_6_1 = new JLabel("ALTA");
+		lblNewLabel_5_6_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1 = new JLabel("Rellene todos los campos y pulse ALTA");
+		
+		JLabel lblNewLabel_5_4_2_1 = new JLabel("");
+		
+		JLabel lblNewLabel_5_5_2_1 = new JLabel("BUSQUEDA");
+		lblNewLabel_5_5_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_2_2_1 = new JLabel("Rellene cualquier campo y pulse BUSCAR");
+		
+		textField_26 = new JTextField();
+		textField_26.setForeground(Color.RED);
+		textField_26.setCaretColor(Color.RED);
+		textField_26.setDisabledTextColor(Color.RED);
+		textField_26.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textField_26.setEditable(false);
+		textField_26.setColumns(10);
+		
+		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
+		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_1_2_1 = new JButton("BAJA");
+		btnBaja_2_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JRadioButton rdbtnNewRadioButton_4_1_1 = new JRadioButton("Infantil");
+		
+		JRadioButton rdbtnNewRadioButton_1_4_1_1 = new JRadioButton("Adulto");
+		rdbtnNewRadioButton_1_4_1_1.setAlignmentY(0.0f);
+		
+		JScrollPane scrollPane_1_2_2_1 = new JScrollPane();
+		
+		JLabel lblNewLabel_5_5_2_1_1 = new JLabel("BAJA");
+		lblNewLabel_5_5_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_1 = new JLabel("Busque, seleccione y pulse BAJA");
+		
+		JButton btnBaja_2_3_1_1 = new JButton("MODIFICAR");
+		btnBaja_2_3_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_1_2_1_1 = new JButton("ALTA");
+		btnBaja_2_1_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_5_2_1_4 = new JLabel("MODIFICAR");
+		lblNewLabel_5_5_2_1_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_1_3 = new JLabel("Busque, cambie campos y pulse MODIFICAR");
+		GroupLayout gl_inventario = new GroupLayout(inventario);
+		gl_inventario.setHorizontalGroup(
+			gl_inventario.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_inventario.createSequentialGroup()
+					.addGroup(gl_inventario.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_inventario.createSequentialGroup()
+							.addGap(44)
+							.addGroup(gl_inventario.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(textField_21, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+								.addComponent(textField_24)
+								.addComponent(textField_25)
+								.addComponent(textField_18))
+							.addGap(94)
+							.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_inventario.createSequentialGroup()
+									.addComponent(lblNewLabel_5_5_2_1, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_5_2_2_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_inventario.createSequentialGroup()
+									.addComponent(lblNewLabel_5_5_2_1_1)
+									.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_5_1_2_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_inventario.createSequentialGroup()
+									.addComponent(lblNewLabel_5_6_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_5_1_2_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNewLabel_5_4_2_1, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+								.addGroup(gl_inventario.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_inventario.createSequentialGroup()
+											.addComponent(btnBaja_2_1_2_1_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_1_2_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_3_1)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_3_1_1))
+										.addGroup(gl_inventario.createSequentialGroup()
+											.addComponent(lblNewLabel_5_5_2_1_4, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+											.addComponent(lblNewLabel_5_1_2_1_1_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+										.addComponent(textField_26, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))))
+							.addGap(26))
+						.addGroup(gl_inventario.createSequentialGroup()
+							.addGap(63)
+							.addComponent(rdbtnNewRadioButton_4_1_1)
+							.addGap(70)
+							.addComponent(rdbtnNewRadioButton_1_4_1_1)))
+					.addContainerGap())
+				.addGroup(gl_inventario.createSequentialGroup()
+					.addGap(332)
+					.addComponent(lblInventario_2_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(354))
+				.addGroup(gl_inventario.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane_1_2_2_1, GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+					.addGap(16))
+		);
+		gl_inventario.setVerticalGroup(
+			gl_inventario.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_inventario.createSequentialGroup()
+					.addGap(26)
+					.addComponent(lblInventario_2_1)
+					.addGap(18)
+					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_21, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_6_1)
+						.addComponent(lblNewLabel_5_1_2_1))
+					.addGap(14)
+					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_24, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_5_2_1_1)
+						.addComponent(lblNewLabel_5_1_2_1_1))
+					.addGap(6)
+					.addComponent(lblNewLabel_5_4_2_1)
+					.addGap(11)
+					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_25, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_5_2_1)
+						.addComponent(lblNewLabel_5_2_2_1))
+					.addGap(18)
+					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_18, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_5_2_1_4)
+						.addComponent(lblNewLabel_5_1_2_1_1_3))
+					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+					.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_inventario.createSequentialGroup()
+							.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+								.addComponent(rdbtnNewRadioButton_4_1_1)
+								.addComponent(rdbtnNewRadioButton_1_4_1_1))
+							.addGap(44))
+						.addGroup(gl_inventario.createSequentialGroup()
+							.addComponent(textField_26, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnBaja_2_3_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnBaja_2_3_1)
+								.addComponent(btnBaja_2_1_2_1)
+								.addComponent(btnBaja_2_1_2_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+					.addGap(18)
+					.addComponent(scrollPane_1_2_2_1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		
+		table_2 = new JTable();
+		scrollPane_1_2_2_1.setViewportView(table_2);
+		inventario.setLayout(gl_inventario);
 		
 		JPanel prestamo = new JPanel();
+		tabbedPane.addTab("            PRESTAMO         ", null, prestamo, null);
 		prestamo.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		tabbedPane.addTab("            Prestamo               ", null, prestamo, null);
+		
+		textField_19 = new JTextField();
+		textField_19.setText("< Introduzca el ISBN del libro >");
+		textField_19.setColumns(10);
+		
+		textField_22 = new JTextField();
+		textField_22.setText("< Introduzca el Numero de socio >");
+		textField_22.setColumns(10);
+		
+		textField_23 = new JTextField();
+		textField_23.setEditable(false);
+		textField_23.setText("< Fecha Alta >");
+		textField_23.setColumns(10);
+		
+		JButton btnBaja_2_1_2_1_1_2 = new JButton("ALTA");
+		btnBaja_2_1_2_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_1_2_1_3 = new JButton("BAJA");
+		btnBaja_2_1_2_1_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_3_1_3 = new JButton("BUSCAR");
+		btnBaja_2_3_1_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_5_2_1_3 = new JLabel("BUSQUEDA");
+		lblNewLabel_5_5_2_1_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_2_2_1_2 = new JLabel("Rellene cualquier campo y pulse BUSCAR");
+		
+		JLabel lblNewLabel_5_5_2_1_1_2 = new JLabel("BAJA");
+		lblNewLabel_5_5_2_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_1_2 = new JLabel("Busque, seleccione y pulse BAJA");
+		
+		JLabel lblNewLabel_5_6_1_2 = new JLabel("ALTA");
+		lblNewLabel_5_6_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_3 = new JLabel("Rellene todos los campos y pulse ALTA");
+		
+		JLabel lblNewLabel_5_4_2_1_2 = new JLabel("");
+		
+		textField_32 = new JTextField();
+		textField_32.setForeground(Color.RED);
+		textField_32.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textField_32.setEditable(false);
+		textField_32.setDisabledTextColor(Color.RED);
+		textField_32.setColumns(10);
+		textField_32.setCaretColor(Color.RED);
+		
+		JRadioButton rdbtnNewRadioButton_4_1_1_1 = new JRadioButton("15 Dias");
+		
+		JRadioButton rdbtnNewRadioButton_1_4_1_1_1 = new JRadioButton("30 Dias");
+		rdbtnNewRadioButton_1_4_1_1_1.setAlignmentY(0.0f);
+		
+		JLabel lblInventario_2_1_2 = new JLabel("PRESTAMO");
+		lblInventario_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JScrollPane scrollPane_1_2_2_1_2 = new JScrollPane();
 		
 		textField = new JTextField();
-		textField.setText("< Introduzca el ISBN del libro >");
+		textField.setEditable(false);
+		textField.setText("< Fecha Devolucion >");
 		textField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setText("< Introduzca el Numero de socio >");
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setDisabledTextColor(Color.BLACK);
-		textField_3.setEnabled(false);
-		textField_3.setText("< Numero de socio >");
-		textField_3.setColumns(10);
-		
-	
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("15 dias");
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("30 dias");
-		rdbtnNewRadioButton_1.setAlignmentY(Component.TOP_ALIGNMENT);
-		
-		textField_4 = new JTextField();
-		textField_4.setDisabledTextColor(Color.BLACK);
-		textField_4.setEnabled(false);
-		textField_4.setText("< Fecha inico >");
-		textField_4.setColumns(10);
-		
-		textField_5 = new JTextField();
-		textField_5.setEnabled(false);
-		textField_5.setDisabledTextColor(Color.BLACK);
-		textField_5.setText("< Fecha  devolución >");
-		textField_5.setColumns(10);
-		
-		textField_6 = new JTextField();
-		textField_6.setDisabledTextColor(Color.BLACK);
-		textField_6.setEnabled(false);
-		textField_6.setText("< Fecha Inico >");
-		textField_6.setColumns(10);
-		
-		JButton btnNewButton_4_1 = new JButton("OK");
-		
-		textField_8 = new JTextField();
-		textField_8.setEditable(false);
-		textField_8.setSelectedTextColor(Color.BLACK);
-		textField_8.setDisabledTextColor(Color.BLACK);
-		textField_8.setText(" < Avisos >");
-		textField_8.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textField_8.setColumns(10);
-		
-		scrollPane_1 = new JScrollPane();
-		
-		JLabel lblNewLabel_4 = new JLabel("Prestamos");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnNewButton = new JButton("ALTA ");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnBaja = new JButton("BAJA");
-		btnBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JLabel lblNewLabel = new JLabel("PRESTAMOS");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		textField_20 = new JTextField();
-		textField_20.setText("< Fecha  devolución >");
-		textField_20.setEnabled(false);
-		textField_20.setDisabledTextColor(Color.BLACK);
-		textField_20.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setText("< Introduzca el ISBN del libro >");
-		textField_1.setColumns(10);
-		
-		JButton btnNewButton_4_1_2 = new JButton("OK");
-		
-		JButton btnNewButton_4_1_3 = new JButton("OK");
+		JLabel lblNewLabel = new JLabel("Duración del Prestamo");
 		GroupLayout gl_prestamo = new GroupLayout(prestamo);
 		gl_prestamo.setHorizontalGroup(
 			gl_prestamo.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_prestamo.createSequentialGroup()
-					.addGap(119)
-					.addComponent(btnNewButton)
-					.addGap(142)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
-					.addComponent(btnBaja)
-					.addGap(318))
 				.addGroup(gl_prestamo.createSequentialGroup()
-					.addGap(47)
+					.addContainerGap()
+					.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+					.addGap(16))
+				.addGroup(gl_prestamo.createSequentialGroup()
+					.addGap(332)
+					.addComponent(lblInventario_2_1_2)
+					.addContainerGap(367, Short.MAX_VALUE))
+				.addGroup(gl_prestamo.createSequentialGroup()
+					.addGap(44)
 					.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(textField_19, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+							.addComponent(textField_22))
 						.addGroup(gl_prestamo.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton_4_1_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-							.addGap(70)
-							.addComponent(btnNewButton_4_1, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-							.addGap(6))
-						.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_prestamo.createSequentialGroup()
-								.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_prestamo.createSequentialGroup()
-										.addGap(30)
-										.addComponent(rdbtnNewRadioButton)
-										.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-										.addComponent(rdbtnNewRadioButton_1)
-										.addGap(61))
-									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnNewButton_4_1_3, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-								.addGap(132))
-							.addGroup(gl_prestamo.createSequentialGroup()
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED))))
-					.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-						.addComponent(textField_3)
-						.addGroup(gl_prestamo.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField_23, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_prestamo.createSequentialGroup()
-									.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addComponent(textField_20, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)))))
-					.addGap(223))
-				.addGroup(gl_prestamo.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 749, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(178, Short.MAX_VALUE))
-				.addGroup(gl_prestamo.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(857, Short.MAX_VALUE))
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_prestamo.createSequentialGroup()
+									.addGap(40)
+									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
+										.addComponent(rdbtnNewRadioButton_1_4_1_1_1)
+										.addComponent(rdbtnNewRadioButton_4_1_1_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+					.addGap(94)
+					.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addComponent(lblNewLabel_5_5_2_1_3, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_5_2_2_1_2, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addComponent(lblNewLabel_5_5_2_1_1_2)
+							.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_5_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addComponent(lblNewLabel_5_6_1_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_5_1_2_1_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel_5_4_2_1_2, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textField_32, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+								.addGroup(gl_prestamo.createSequentialGroup()
+									.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnBaja_2_1_2_1_3, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnBaja_2_3_1_3)
+									.addGap(109)))))
+					.addGap(25))
 		);
 		gl_prestamo.setVerticalGroup(
 			gl_prestamo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_prestamo.createSequentialGroup()
-					.addGap(44)
 					.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblNewLabel))
-						.addComponent(btnBaja, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
-					.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_4_1)
-						.addComponent(btnNewButton_4_1_2))
-					.addGap(18)
-					.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_4_1_3))
-					.addGap(18)
-					.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
-						.addComponent(rdbtnNewRadioButton_1)
-						.addComponent(rdbtnNewRadioButton)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_20, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_4)
-					.addGap(28)
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addGap(26)
+							.addComponent(lblInventario_2_1_2)
+							.addGap(18)
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField_19, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_5_6_1_2)
+								.addComponent(lblNewLabel_5_1_2_1_3))
+							.addGap(14)
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField_22, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_5_5_2_1_1_2)
+								.addComponent(lblNewLabel_5_1_2_1_1_2))
+							.addGap(6)
+							.addComponent(lblNewLabel_5_4_2_1_2)
+							.addGap(11)
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel_5_5_2_1_3)
+								.addComponent(lblNewLabel_5_2_2_1_2))
+							.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_prestamo.createSequentialGroup()
+									.addGap(57)
+									.addComponent(textField_32, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnBaja_2_3_1_3)
+										.addComponent(btnBaja_2_1_2_1_3)
+										.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_prestamo.createSequentialGroup()
+									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_prestamo.createSequentialGroup()
+											.addGap(17)
+											.addComponent(rdbtnNewRadioButton_1_4_1_1_1))
+										.addGroup(gl_prestamo.createSequentialGroup()
+											.addGap(5)
+											.addComponent(lblNewLabel)))
+									.addGap(18)
+									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+										.addComponent(textField_23, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+							.addGap(18)
+							.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+						.addGroup(gl_prestamo.createSequentialGroup()
+							.addGap(136)
+							.addComponent(rdbtnNewRadioButton_4_1_1_1)))
 					.addContainerGap())
 		);
 		
 		table = new JTable();
-		scrollPane_1.setViewportView(table);
+		scrollPane_1_2_2_1_2.setViewportView(table);
 		prestamo.setLayout(gl_prestamo);
 		
-		JPanel Inventario = new JPanel();
-		tabbedPane.addTab("            Inventario             ", null, Inventario, null);
-		Inventario.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		JPanel socios = new JPanel();
+		tabbedPane.addTab("            SOCIOS            ", null, socios, null);
+		socios.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JButton btnNewButton_2 = new JButton("ALTA ");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_27 = new JTextField();
+		textField_27.setText("< Introduzca el Numero de socio  >");
+		textField_27.setColumns(10);
 		
-		JLabel lblInventario = new JLabel("INVENTARIO");
-		lblInventario.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textField_28 = new JTextField();
+		textField_28.setText("< Introduzca el Nombre completo >");
+		textField_28.setColumns(10);
 		
-		JButton btnBaja_2 = new JButton("BUSCAR");
-		btnBaja_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnBaja_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_29 = new JTextField();
+		textField_29.setText("< Fecha de nacimiento >");
+		textField_29.setColumns(10);
+		
+		JButton btnBaja_2_1_2_1_1_1 = new JButton("ALTA");
+		btnBaja_2_1_2_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_1_2_1_2 = new JButton("BAJA");
+		btnBaja_2_1_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_3_1_2 = new JButton("BUSCAR");
+		btnBaja_2_3_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBaja_2_3_1_1_1 = new JButton("MODIFICAR");
+		btnBaja_2_3_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_5_5_2_1_2 = new JLabel("BUSQUEDA");
+		lblNewLabel_5_5_2_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_2_2_1_1 = new JLabel("Rellene cualqueir campo y pulse BUSCAR");
+		
+		JLabel lblNewLabel_5_5_2_1_1_1 = new JLabel("BAJA");
+		lblNewLabel_5_5_2_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_1_1 = new JLabel("Busque, seleccione y pulse BAJA");
+		
+		JLabel lblNewLabel_5_6_1_1 = new JLabel("ALTA");
+		lblNewLabel_5_6_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblNewLabel_5_1_2_1_2 = new JLabel("Rellene todos los campos y pulse ALTA");
+		
+		JLabel lblNewLabel_5_4_2_1_1 = new JLabel("");
 		
 		textField_31 = new JTextField();
-		textField_31.setText("< Introduzca el ISBN del libro >");
+		textField_31.setForeground(Color.RED);
+		textField_31.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textField_31.setEditable(false);
+		textField_31.setDisabledTextColor(Color.RED);
 		textField_31.setColumns(10);
+		textField_31.setCaretColor(Color.RED);
 		
-		JButton btnNewButton_4_1_2_2 = new JButton("OK");
+		JLabel lblInventario_2_1_1 = new JLabel("SOCIOS");
+		lblInventario_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton btnNewButton_4_1_5 = new JButton("OK");
+		JScrollPane scrollPane_1_2_2_1_1 = new JScrollPane();
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Infantil");
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Trabajador");
 		
-		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("Adulto");
-		rdbtnNewRadioButton_1_4.setAlignmentY(0.0f);
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setLineWrap(true);
+		textArea_1.setPreferredSize(new Dimension(288, 100));
+		textArea_1.setMaximumSize(new Dimension(288, 100));
+		textArea_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		textArea_1.setText("< Mas informacion >");
 		
-		textField_32 = new JTextField();
-		textField_32.setText("< Introduzca el Titulo >");
-		textField_32.setColumns(10);
+		JLabel lblNewLabel_5_5_2_1_2_1 = new JLabel("MODIFICAR");
+		lblNewLabel_5_5_2_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JButton btnNewButton_4_1_3_2 = new JButton("OK");
-		
-		JScrollPane scrollPane_1_2 = new JScrollPane();
-		
-		textField_33 = new JTextField();
-		textField_33.setText("< Introduzca el Autor >");
-		textField_33.setColumns(10);
-		
-		textField_34 = new JTextField();
-		textField_34.setText("< Introduzca la Edicion >");
-		textField_34.setColumns(10);
-		
-		JButton btnBaja_2_1 = new JButton("BAJA");
-		btnBaja_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnNewButton_4_1_5_1 = new JButton("OK");
-		
-		JLabel lblNewLabel_5 = new JLabel("ALTA");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblNewLabel_5_1 = new JLabel("Rellene todos los campos y pulse ALTA");
-		
-		JLabel lblNewLabel_5_2 = new JLabel("Busque, seleccione y pulse BAJA");
-		
-		JLabel lblNewLabel_5_4 = new JLabel("");
-		
-		JLabel lblNewLabel_5_5 = new JLabel("BAJA");
-		lblNewLabel_5_5.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		textField_35 = new JTextField(); // Cuando se pulse baja por primera vez nos preguntara si estamos seguros
-		textField_35.setEditable(false);
-		textField_35.setColumns(10);
-		GroupLayout gl_Inventario = new GroupLayout(Inventario);
-		gl_Inventario.setHorizontalGroup(
-			gl_Inventario.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_Inventario.createSequentialGroup()
-					.addGap(330)
-					.addComponent(lblInventario)
-					.addContainerGap(343, Short.MAX_VALUE))
-				.addGroup(gl_Inventario.createSequentialGroup()
-					.addGap(47)
-					.addGroup(gl_Inventario.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_Inventario.createSequentialGroup()
-							.addComponent(textField_34, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton_4_1_5_1, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_Inventario.createSequentialGroup()
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_Inventario.createSequentialGroup()
-									.addComponent(textField_31, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnNewButton_4_1_2_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_Inventario.createSequentialGroup()
-									.addComponent(textField_32, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnNewButton_4_1_3_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_Inventario.createSequentialGroup()
-									.addComponent(textField_33, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnNewButton_4_1_5, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)))
-							.addGap(78)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_Inventario.createSequentialGroup()
-									.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblNewLabel_5_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel_5_4, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_Inventario.createSequentialGroup()
-									.addGap(1)
-									.addGroup(gl_Inventario.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_Inventario.createSequentialGroup()
-											.addComponent(lblNewLabel_5_5, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-											.addGap(18)
-											.addComponent(lblNewLabel_5_2, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
-										.addComponent(textField_35, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
-										.addGroup(gl_Inventario.createSequentialGroup()
-											.addComponent(btnNewButton_2)
-											.addGap(26)
-											.addComponent(btnBaja_2, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-											.addComponent(btnBaja_2_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-											.addGap(22)))))))
-					.addGap(94))
-				.addGroup(gl_Inventario.createSequentialGroup()
-					.addGap(83)
-					.addComponent(rdbtnNewRadioButton_4)
-					.addGap(43)
-					.addComponent(rdbtnNewRadioButton_1_4)
-					.addContainerGap(585, Short.MAX_VALUE))
-				.addGroup(gl_Inventario.createSequentialGroup()
+		JLabel lblNewLabel_5_1_2_1_1_3_1 = new JLabel("Busque, cambie campos y pulse MODIFICAR");
+		GroupLayout gl_socios = new GroupLayout(socios);
+		gl_socios.setHorizontalGroup(
+			gl_socios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_socios.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane_1_2, GroupLayout.PREFERRED_SIZE, 749, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(68, Short.MAX_VALUE))
-		);
-		gl_Inventario.setVerticalGroup(
-			gl_Inventario.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_Inventario.createSequentialGroup()
+					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+					.addGap(16))
+				.addGroup(gl_socios.createSequentialGroup()
+					.addGap(348)
+					.addComponent(lblInventario_2_1_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(367, Short.MAX_VALUE))
+				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(44)
-					.addComponent(lblInventario)
+					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
+						.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+						.addComponent(textField_27, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+						.addComponent(textField_28, 288, 288, Short.MAX_VALUE)
+						.addGroup(gl_socios.createSequentialGroup()
+							.addComponent(textField_29, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+							.addGap(57)
+							.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
+					.addGap(94)
+					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_socios.createSequentialGroup()
+							.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_socios.createSequentialGroup()
+									.addComponent(lblNewLabel_5_5_2_1_1_1)
+									.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_5_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_socios.createSequentialGroup()
+									.addComponent(lblNewLabel_5_6_1_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_5_1_2_1_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNewLabel_5_4_2_1_1, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+								.addGroup(gl_socios.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_socios.createSequentialGroup()
+											.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_1_2_1_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_3_1_2)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnBaja_2_3_1_1_1))
+										.addComponent(textField_31, Alignment.LEADING, 330, 330, 330)))
+								.addGroup(gl_socios.createSequentialGroup()
+									.addComponent(lblNewLabel_5_5_2_1_2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+									.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblNewLabel_5_1_2_1_1_3_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_5_2_2_1_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
+							.addGap(25))
+						.addGroup(gl_socios.createSequentialGroup()
+							.addComponent(lblNewLabel_5_5_2_1_2_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
+		);
+		gl_socios.setVerticalGroup(
+			gl_socios.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(26)
-					.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_31, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_4_1_2_2)
-						.addComponent(lblNewLabel_5)
-						.addComponent(lblNewLabel_5_1))
-					.addGroup(gl_Inventario.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_Inventario.createSequentialGroup()
+					.addComponent(lblInventario_2_1_1)
+					.addGap(18)
+					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_27, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_6_1_1)
+						.addComponent(lblNewLabel_5_1_2_1_2))
+					.addGap(14)
+					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_28, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_5_2_1_1_1)
+						.addComponent(lblNewLabel_5_1_2_1_1_1))
+					.addGap(6)
+					.addComponent(lblNewLabel_5_4_2_1_1)
+					.addGap(11)
+					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_29, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_5_5_2_1_2)
+						.addComponent(lblNewLabel_5_2_2_1_1))
+					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_socios.createSequentialGroup()
+							.addGap(57)
+							.addComponent(textField_31, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_32, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_4_1_3_2))
+							.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnBaja_2_3_1_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnBaja_2_3_1_2)
+								.addComponent(btnBaja_2_1_2_1_2)
+								.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_socios.createSequentialGroup()
 							.addGap(18)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_33, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_4_1_5))
-							.addGap(18)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_34, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_4_1_5_1))
-							.addGap(18)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(rdbtnNewRadioButton_4)
-								.addComponent(rdbtnNewRadioButton_1_4))
-							.addGap(18))
-						.addGroup(gl_Inventario.createSequentialGroup()
-							.addGap(6)
-							.addComponent(lblNewLabel_5_4)
-							.addGap(11)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_5_2)
-								.addComponent(lblNewLabel_5_5))
-							.addGap(18)
-							.addComponent(textField_35, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_Inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addGap(41)))
-					.addGap(28)
-					.addComponent(scrollPane_1_2, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
+									.addComponent(lblNewLabel_5_5_2_1_2_1)
+									.addComponent(lblNewLabel_5_1_2_1_1_3_1))
+								.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+							.addGap(2)))
+					.addGap(18)
+					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
 					.addContainerGap())
+				.addGroup(gl_socios.createSequentialGroup()
+					.addGap(136)
+					.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(374))
 		);
 		
 		table_1 = new JTable();
-		scrollPane_1_2.setViewportView(table_1);
-		Inventario.setLayout(gl_Inventario);
-		
-		JPanel socio = new JPanel();
-		tabbedPane.addTab("             Socios             ", null, socio, null);
-		socio.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		
-		JButton btnBaja_2_2 = new JButton("BUSCAR");
-		btnBaja_2_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JLabel lblInventario_1 = new JLabel("INVENTARIO");
-		lblInventario_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		JButton btnBaja_2_1_1 = new JButton("BAJA");
-		btnBaja_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		textField_19 = new JTextField();
-		textField_19.setText("< Introduzca el Numero de socio >");
-		textField_19.setColumns(10);
-		
-		JButton btnNewButton_4_1_2_2_1 = new JButton("OK");
-		
-		textField_22 = new JTextField();
-		textField_22.setText("< Introduzca Nombre completo  >");
-		textField_22.setColumns(10);
-		
-		JButton btnNewButton_4_1_3_2_1 = new JButton("OK");
-		
-		textField_23 = new JTextField();
-		textField_23.setText("< introduzca fecha de nacimiento >");
-		textField_23.setColumns(10);
-		
-		JButton btnNewButton_4_1_5_2 = new JButton("OK");
-		
-		JLabel lblNewLabel_5_3 = new JLabel("ALTA");
-		lblNewLabel_5_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblNewLabel_5_1_1 = new JLabel("Rellene todos los campos y pulse ALTA");
-		
-		JLabel lblNewLabel_5_4_1 = new JLabel("");
-		
-		JLabel lblNewLabel_5_5_1 = new JLabel("BAJA");
-		lblNewLabel_5_5_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		
-		JLabel lblNewLabel_5_2_1 = new JLabel("Busque, seleccione y pulse BAJA");
-		
-		JButton btnNewButton_2_1 = new JButton("ALTA ");
-		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		textField_36 = new JTextField();
-		textField_36.setEditable(false);
-		textField_36.setColumns(10);
-		
-		JScrollPane scrollPane_1_2_1 = new JScrollPane();
-		
-		JTextArea textArea = new JTextArea();
-		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Trabajador");
-		GroupLayout gl_socio = new GroupLayout(socio);
-		gl_socio.setHorizontalGroup(
-			gl_socio.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_socio.createSequentialGroup()
-					.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_socio.createSequentialGroup()
-							.addGap(330)
-							.addComponent(lblInventario_1))
-						.addGroup(gl_socio.createSequentialGroup()
-							.addGap(47)
-							.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_socio.createSequentialGroup()
-									.addComponent(textField_19, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnNewButton_4_1_2_2_1, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_socio.createSequentialGroup()
-									.addComponent(textField_22, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnNewButton_4_1_3_2_1, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_socio.createSequentialGroup()
-									.addGroup(gl_socio.createParallelGroup(Alignment.TRAILING)
-										.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-										.addComponent(textField_23, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-										.addComponent(chckbxNewCheckBox)
-										.addComponent(btnNewButton_4_1_5_2, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))))
-							.addGap(55)
-							.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_socio.createSequentialGroup()
-									.addComponent(btnNewButton_2_1)
-									.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_socio.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(lblNewLabel_5_4_1, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_socio.createSequentialGroup()
-											.addGap(29)
-											.addComponent(btnBaja_2_2, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
-											.addGap(31)
-											.addComponent(btnBaja_2_1_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))))
-								.addComponent(textField_36, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_socio.createSequentialGroup()
-									.addComponent(lblNewLabel_5_3, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblNewLabel_5_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_socio.createSequentialGroup()
-									.addComponent(lblNewLabel_5_5_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblNewLabel_5_2_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_socio.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(scrollPane_1_2_1, GroupLayout.PREFERRED_SIZE, 749, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+		scrollPane_1_2_2_1_1.setViewportView(table_1);
+		socios.setLayout(gl_socios);
+		GroupLayout groupLayout = new GroupLayout(frmBiblioteca.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(7)
+					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
-		gl_socio.setVerticalGroup(
-			gl_socio.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_socio.createSequentialGroup()
-					.addGap(44)
-					.addComponent(lblInventario_1)
-					.addGap(26)
-					.addGroup(gl_socio.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_19, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_4_1_2_2_1)
-						.addComponent(lblNewLabel_5_3)
-						.addComponent(lblNewLabel_5_1_1))
-					.addGroup(gl_socio.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_socio.createSequentialGroup()
-							.addGap(18)
-							.addGroup(gl_socio.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_22, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_4_1_3_2_1))
-							.addGap(18)
-							.addGroup(gl_socio.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_23, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_4_1_5_2))
-							.addGap(18)
-							.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-								.addComponent(chckbxNewCheckBox)
-								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_socio.createSequentialGroup()
-							.addGroup(gl_socio.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_socio.createSequentialGroup()
-									.addGap(6)
-									.addComponent(lblNewLabel_5_4_1))
-								.addGroup(gl_socio.createSequentialGroup()
-									.addGap(18)
-									.addGroup(gl_socio.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblNewLabel_5_5_1)
-										.addComponent(lblNewLabel_5_2_1))))
-							.addGap(18)
-							.addComponent(textField_36, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_socio.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnNewButton_2_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_1_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addGap(23)))
-					.addGap(39)
-					.addComponent(scrollPane_1_2_1, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(6)
+					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
-		socio.setLayout(gl_socio);
-		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, prestamo, textField, textField_2, textField_3, rdbtnNewRadioButton, rdbtnNewRadioButton_1, textField_4, textField_5, textField_6, btnNewButton_4_1, textField_8, scrollPane_1, lblNewLabel_4, btnNewButton, btnBaja, lblNewLabel, textField_20, textField_1, btnNewButton_4_1_2, btnNewButton_4_1_3, table, textField_33, textField_34, btnBaja_2_1, table_1, btnNewButton_4_1_5_1, lblNewLabel_5, lblNewLabel_5_1, lblNewLabel_5_2, lblNewLabel_5_4, lblNewLabel_5_5, textField_35, socio, btnBaja_2_2, lblInventario_1, btnBaja_2_1_1, textField_19, btnNewButton_4_1_2_2_1, textField_22, btnNewButton_4_1_3_2_1, textField_23, btnNewButton_4_1_5_2, lblNewLabel_5_3, lblNewLabel_5_1_1, lblNewLabel_5_4_1, lblNewLabel_5_5_1, lblNewLabel_5_2_1, btnNewButton_2_1, textField_36, scrollPane_1_2_1, textArea, chckbxNewCheckBox}));
-		
+		frmBiblioteca.getContentPane().setLayout(groupLayout);
+		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario_2_1, textField_18, textField_21, textField_24, textField_25, lblNewLabel_5_6_1, lblNewLabel_5_1_2_1, lblNewLabel_5_4_2_1, lblNewLabel_5_5_2_1, lblNewLabel_5_2_2_1, textField_26, btnBaja_2_3_1, btnBaja_2_1_2_1, rdbtnNewRadioButton_4_1_1, rdbtnNewRadioButton_1_4_1_1, scrollPane_1_2_2_1, lblNewLabel_5_5_2_1_1, lblNewLabel_5_1_2_1_1, btnBaja_2_3_1_1, btnBaja_2_1_2_1_1, table_2, prestamo, textField_19, textField_22, textField_23, btnBaja_2_1_2_1_1_2, btnBaja_2_1_2_1_3, btnBaja_2_3_1_3, lblNewLabel_5_5_2_1_3, lblNewLabel_5_2_2_1_2, lblNewLabel_5_5_2_1_1_2, lblNewLabel_5_1_2_1_1_2, lblNewLabel_5_6_1_2, lblNewLabel_5_1_2_1_3, lblNewLabel_5_4_2_1_2, textField_32, rdbtnNewRadioButton_4_1_1_1, rdbtnNewRadioButton_1_4_1_1_1, lblInventario_2_1_2, scrollPane_1_2_2_1_2, lblNewLabel_5_5_2_1_4, lblNewLabel_5_1_2_1_1_3, textField, lblNewLabel, table}));
+		frmBiblioteca.setVisible(true);
 	}
 }
