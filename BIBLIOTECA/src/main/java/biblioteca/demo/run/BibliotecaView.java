@@ -1,6 +1,7 @@
 package biblioteca.demo.run;
 
 import javax.swing.JFrame;
+
 import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -63,6 +64,11 @@ public class BibliotecaView {
 	private JTextField textField_32;
 	private JTextField textField;
 	private JTable table;
+	
+	private ButtonGroup grupoBoton_1;
+	private ButtonGroup grupoBoton_2;
+	
+	
 		
 	public BibliotecaView() {		// inicializamos la biblioteca
 		initialize ();
@@ -78,6 +84,8 @@ public class BibliotecaView {
 		frmBiblioteca.setVisible(true);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		
+		// PRESTAMO comienza esta pestaña
 		
 		JPanel prestamo = new JPanel();
 		tabbedPane.addTab("            PRESTAMO         ", null, prestamo, null);
@@ -130,10 +138,15 @@ public class BibliotecaView {
 		textField_32.setColumns(10);
 		textField_32.setCaretColor(Color.RED);
 		
-		JRadioButton rdbtnNewRadioButton_4_1_1_1 = new JRadioButton("15 Dias");
+		grupoBoton_1 = new ButtonGroup();
 		
-		JRadioButton rdbtnNewRadioButton_1_4_1_1_1 = new JRadioButton("30 Dias");
-		rdbtnNewRadioButton_1_4_1_1_1.setAlignmentY(0.0f);
+		JRadioButton rdbtn15 = new JRadioButton("15 Dias");
+		rdbtn15.setSelected(true);
+		grupoBoton_1.add(rdbtn15);
+		
+		JRadioButton rdbtn30 = new JRadioButton("30 Dias");
+		rdbtn30.setAlignmentY(0.0f);
+		grupoBoton_1.add(rdbtn30);
 		
 		JLabel lblInventario_2_1_2 = new JLabel("PRESTAMO");
 		lblInventario_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -174,8 +187,8 @@ public class BibliotecaView {
 								.addGroup(gl_prestamo.createSequentialGroup()
 									.addGap(40)
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
-										.addComponent(rdbtnNewRadioButton_1_4_1_1_1)
-										.addComponent(rdbtnNewRadioButton_4_1_1_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+										.addComponent(rdbtn30)
+										.addComponent(rdbtn15, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
 					.addGap(94)
 					.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_prestamo.createSequentialGroup()
@@ -240,7 +253,7 @@ public class BibliotecaView {
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_prestamo.createSequentialGroup()
 											.addGap(17)
-											.addComponent(rdbtnNewRadioButton_1_4_1_1_1))
+											.addComponent(rdbtn30))
 										.addGroup(gl_prestamo.createSequentialGroup()
 											.addGap(5)
 											.addComponent(lblNewLabel)))
@@ -252,13 +265,15 @@ public class BibliotecaView {
 							.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addGap(136)
-							.addComponent(rdbtnNewRadioButton_4_1_1_1)))
+							.addComponent(rdbtn15)))
 					.addContainerGap())
 		);
 		
 		table = new JTable();
 		scrollPane_1_2_2_1_2.setViewportView(table);
 		prestamo.setLayout(gl_prestamo);
+		
+		// SOCIOS comienza el panel de socios
 		
 		JPanel socios = new JPanel();
 		tabbedPane.addTab("            SOCIOS            ", null, socios, null);
@@ -453,6 +468,8 @@ public class BibliotecaView {
 				.addComponent(tabbedPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
 		);
 		
+		// INVENTARIO comienza el panel inventario
+		
 		JPanel inventario = new JPanel();
 		tabbedPane.addTab("           INVENTARIO          ", null, inventario, null);
 		inventario.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -502,10 +519,15 @@ public class BibliotecaView {
 		JButton btnBaja_2_1_2_1 = new JButton("BAJA");
 		btnBaja_2_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JRadioButton rdbtnNewRadioButton_4_1_1 = new JRadioButton("Infantil");
+		grupoBoton_2 = new ButtonGroup();
 		
-		JRadioButton rdbtnNewRadioButton_1_4_1_1 = new JRadioButton("Adulto");
-		rdbtnNewRadioButton_1_4_1_1.setAlignmentY(0.0f);
+		JRadioButton rdbtnInfantil = new JRadioButton("Infantil");
+		grupoBoton_2.add(rdbtnInfantil);
+		
+		JRadioButton rdbtnAdulto = new JRadioButton("Adulto");
+		rdbtnAdulto.setSelected(true);
+		rdbtnAdulto.setAlignmentY(0.0f);
+		grupoBoton_2.add(rdbtnAdulto);
 		
 		JScrollPane scrollPane_1_2_2_1 = new JScrollPane();
 		
@@ -570,9 +592,9 @@ public class BibliotecaView {
 							.addGap(26))
 						.addGroup(gl_inventario.createSequentialGroup()
 							.addGap(63)
-							.addComponent(rdbtnNewRadioButton_4_1_1)
+							.addComponent(rdbtnInfantil)
 							.addGap(70)
-							.addComponent(rdbtnNewRadioButton_1_4_1_1)))
+							.addComponent(rdbtnAdulto)))
 					.addContainerGap())
 				.addGroup(gl_inventario.createSequentialGroup()
 					.addGap(332)
@@ -614,8 +636,8 @@ public class BibliotecaView {
 					.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_inventario.createSequentialGroup()
 							.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(rdbtnNewRadioButton_4_1_1)
-								.addComponent(rdbtnNewRadioButton_1_4_1_1))
+								.addComponent(rdbtnInfantil)
+								.addComponent(rdbtnAdulto))
 							.addGap(44))
 						.addGroup(gl_inventario.createSequentialGroup()
 							.addComponent(textField_26, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -633,7 +655,7 @@ public class BibliotecaView {
 		table_2 = new JTable();
 		scrollPane_1_2_2_1.setViewportView(table_2);
 		inventario.setLayout(gl_inventario);
-		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario_2_1, textField_18, textField_21, textField_24, textField_25, lblNewLabel_5_6_1, lblNewLabel_5_1_2_1, lblNewLabel_5_4_2_1, lblNewLabel_5_5_2_1, lblNewLabel_5_2_2_1, textField_26, btnBaja_2_3_1, btnBaja_2_1_2_1, rdbtnNewRadioButton_4_1_1, rdbtnNewRadioButton_1_4_1_1, scrollPane_1_2_2_1, lblNewLabel_5_5_2_1_1, lblNewLabel_5_1_2_1_1, btnBaja_2_3_1_1, btnBaja_2_1_2_1_1, table_2, prestamo, textField_19, textField_22, textField_23, btnBaja_2_1_2_1_1_2, btnBaja_2_1_2_1_3, btnBaja_2_3_1_3, lblNewLabel_5_5_2_1_3, lblNewLabel_5_2_2_1_2, lblNewLabel_5_5_2_1_1_2, lblNewLabel_5_1_2_1_1_2, lblNewLabel_5_6_1_2, lblNewLabel_5_1_2_1_3, lblNewLabel_5_4_2_1_2, textField_32, rdbtnNewRadioButton_4_1_1_1, rdbtnNewRadioButton_1_4_1_1_1, lblInventario_2_1_2, scrollPane_1_2_2_1_2, lblNewLabel_5_5_2_1_4, lblNewLabel_5_1_2_1_1_3, textField, lblNewLabel, table}));
+		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario_2_1, textField_18, textField_21, textField_24, textField_25, lblNewLabel_5_6_1, lblNewLabel_5_1_2_1, lblNewLabel_5_4_2_1, lblNewLabel_5_5_2_1, lblNewLabel_5_2_2_1, textField_26, btnBaja_2_3_1, btnBaja_2_1_2_1, rdbtnInfantil, rdbtnAdulto, scrollPane_1_2_2_1, lblNewLabel_5_5_2_1_1, lblNewLabel_5_1_2_1_1, btnBaja_2_3_1_1, btnBaja_2_1_2_1_1, table_2, prestamo, textField_19, textField_22, textField_23, btnBaja_2_1_2_1_1_2, btnBaja_2_1_2_1_3, btnBaja_2_3_1_3, lblNewLabel_5_5_2_1_3, lblNewLabel_5_2_2_1_2, lblNewLabel_5_5_2_1_1_2, lblNewLabel_5_1_2_1_1_2, lblNewLabel_5_6_1_2, lblNewLabel_5_1_2_1_3, lblNewLabel_5_4_2_1_2, textField_32, rdbtn15, rdbtn30, lblInventario_2_1_2, scrollPane_1_2_2_1_2, lblNewLabel_5_5_2_1_4, lblNewLabel_5_1_2_1_1_3, textField, lblNewLabel, table}));
 		frmBiblioteca.getContentPane().setLayout(groupLayout);
 	}
 }
