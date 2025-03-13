@@ -29,9 +29,9 @@ import javax.swing.JScrollPane;
  * No sigue MVC pues es solamente temporal para que durante el desarrollo se tenga posibilidad
  * de realizar acciones de inicializacion
  */
-public class SociosView {
+public class DefaultView {
 
-	private JFrame frmSocios;
+	private JFrame frmDefault;
 
 	/**
 	 * Launch the application.
@@ -40,8 +40,8 @@ public class SociosView {
 		EventQueue.invokeLater(new Runnable() { //NOSONAR codigo autogenerado
 			public void run() {
 				try {
-					SociosView window = new SociosView();
-					window.frmSocios.setVisible(true);
+					DefaultView window = new DefaultView();
+					window.frmDefault.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace(); //NOSONAR codigo autogenerado
 				}
@@ -52,7 +52,7 @@ public class SociosView {
 	/**
 	 * Create the application.
 	 */
-	public SociosView() {	//inicia el programa con una ventana grafica
+	public DefaultView() {	//inicia el programa con una ventana grafica
 		initialize();
 	}
 
@@ -60,11 +60,11 @@ public class SociosView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmSocios = new JFrame();
-		frmSocios.setTitle("SOCIOS");
-		frmSocios.setBounds(0, 0, 800, 600);
-		frmSocios.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		GroupLayout groupLayout = new GroupLayout(frmSocios.getContentPane());
+		frmDefault = new JFrame();
+		frmDefault.setTitle("INVENTARIO");
+		frmDefault.setBounds(0, 0, 800, 600);
+		frmDefault.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		GroupLayout groupLayout = new GroupLayout(frmDefault.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 789, Short.MAX_VALUE)
@@ -73,8 +73,8 @@ public class SociosView {
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 555, Short.MAX_VALUE)
 		);
-		frmSocios.getContentPane().setLayout(groupLayout);
-		// Hacemos visible el frame
-		frmSocios.setVisible(true);
+		frmDefault.getContentPane().setLayout(groupLayout);
+		// Hacemos que sea visible el frame
+		frmDefault.setVisible(true);
 	}
 }
