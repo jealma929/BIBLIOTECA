@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.Dimension;
 import javax.swing.JCheckBox;
+import javax.swing.JTable;
 
 
 /**
@@ -35,10 +36,11 @@ import javax.swing.JCheckBox;
 public class SociosView {
 
 	private JFrame frmSocios;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtNumSocio;
+	private JTextField txtNombreS;
+	private JTextField txtFecha;
+	private JTextField txtAviso;
+	private JTable tablaSocios;
 
 	/**
 	 * Launch the application.
@@ -69,184 +71,186 @@ public class SociosView {
 	private void initialize() {
 		frmSocios = new JFrame();
 		frmSocios.setTitle("SOCIOS");
-		frmSocios.setBounds(0, 0, 800, 600);
+		frmSocios.setBounds(0, 0, 815, 601);
 		frmSocios.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
 		JPanel socios = new JPanel();
 		socios.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JScrollPane scrollPane_1_2_2_1_1 = new JScrollPane();
+		JScrollPane scrollSocios = new JScrollPane();
 		
-		JLabel lblInventario_2_1_1 = new JLabel("SOCIOS");
-		lblInventario_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lblSocio = new JLabel("SOCIOS");
+		lblSocio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setText("< Mas informacion >");
-		textArea_1.setPreferredSize(new Dimension(288, 100));
-		textArea_1.setMaximumSize(new Dimension(288, 100));
-		textArea_1.setLineWrap(true);
-		textArea_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		JTextArea txtMasInfo = new JTextArea();
+		txtMasInfo.setText("< Mas informacion >");
+		txtMasInfo.setPreferredSize(new Dimension(288, 100));
+		txtMasInfo.setMaximumSize(new Dimension(288, 100));
+		txtMasInfo.setLineWrap(true);
+		txtMasInfo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		textField = new JTextField();
-		textField.setText("< Introduzca el Numero de socio  >");
-		textField.setColumns(10);
+		txtNumSocio = new JTextField();
+		txtNumSocio.setText("< Introduzca el Numero de socio  >");
+		txtNumSocio.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setText("< Introduzca el Nombre completo >");
-		textField_1.setColumns(10);
+		txtNombreS = new JTextField();
+		txtNombreS.setText("< Introduzca el Nombre completo >");
+		txtNombreS.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setText("< Fecha de nacimiento >");
-		textField_2.setColumns(10);
+		txtFecha = new JTextField();
+		txtFecha.setText("< Fecha de nacimiento >");
+		txtFecha.setColumns(10);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Trabajador");
+		JCheckBox chckbxTrabajador = new JCheckBox("Trabajador");
+				
+		JLabel lblBaja = new JLabel("BAJA");
+		lblBaja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_5_2_1_1_1 = new JLabel("BAJA");
-		lblNewLabel_5_5_2_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblInfoBaja = new JLabel("Busque, seleccione y pulse BAJA");
+		lblInfoBaja.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_1_2_1_1_1 = new JLabel("Busque, seleccione y pulse BAJA");
+		JLabel lblAlta = new JLabel("ALTA");
+		lblAlta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_6_1_1 = new JLabel("ALTA");
-		lblNewLabel_5_6_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblInfoAlta = new JLabel("Rellene todos los campos y pulse ALTA");
+		lblInfoAlta.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_1_2_1_2 = new JLabel("Rellene todos los campos y pulse ALTA");
+		JButton btnAlta = new JButton("ALTA");
+		btnAlta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_4_2_1_1 = new JLabel("");
+		JButton btnBaja = new JButton("BAJA");
+		btnBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_1_2_1_1_1 = new JButton("ALTA");
-		btnBaja_2_1_2_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_1_2_1_2 = new JButton("BAJA");
-		btnBaja_2_1_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_3_1_2 = new JButton("BUSCAR");
-		btnBaja_2_3_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtAviso = new JTextField();
+		txtAviso.setForeground(Color.RED);
+		txtAviso.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAviso.setEditable(false);
+		txtAviso.setDisabledTextColor(Color.RED);
+		txtAviso.setColumns(10);
+		txtAviso.setCaretColor(Color.RED);
 		
-		JButton btnBaja_2_3_1_1_1 = new JButton("MODIFICAR");
-		btnBaja_2_3_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblBuscar = new JLabel("BUSQUEDA");
+		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		textField_3 = new JTextField();
-		textField_3.setForeground(Color.RED);
-		textField_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textField_3.setEditable(false);
-		textField_3.setDisabledTextColor(Color.RED);
-		textField_3.setColumns(10);
-		textField_3.setCaretColor(Color.RED);
+		JLabel lblInfoModif = new JLabel("Busque, cambie campos y pulse MODIFICAR");
+		lblInfoModif.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_5_2_1_2 = new JLabel("BUSQUEDA");
-		lblNewLabel_5_5_2_1_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblInfoBuscar = new JLabel("Rellene cualqueir campo y pulse BUSCAR");
+		lblInfoBuscar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_1_2_1_1_3_1 = new JLabel("Busque, cambie campos y pulse MODIFICAR");
-		
-		JLabel lblNewLabel_5_2_2_1_1 = new JLabel("Rellene cualqueir campo y pulse BUSCAR");
-		
-		JLabel lblNewLabel_5_5_2_1_2_1 = new JLabel("MODIFICAR");
-		lblNewLabel_5_5_2_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GroupLayout gl_socios = new GroupLayout(socios);
 		gl_socios.setHorizontalGroup(
 			gl_socios.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_socios.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+					.addComponent(scrollSocios, GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
 					.addGap(16))
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(348)
-					.addComponent(lblInventario_2_1_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(375, Short.MAX_VALUE))
+					.addComponent(lblSocio, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(385, Short.MAX_VALUE))
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(44)
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
-						.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, 292, Short.MAX_VALUE)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-						.addComponent(textField_1, 288, 292, Short.MAX_VALUE)
+						.addComponent(txtMasInfo, GroupLayout.PREFERRED_SIZE, 292, Short.MAX_VALUE)
+						.addComponent(txtNumSocio, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+						.addComponent(txtNombreS, 288, 292, Short.MAX_VALUE)
 						.addGroup(gl_socios.createSequentialGroup()
-							.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtFecha, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
 							.addGap(57)
-							.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)))
+							.addComponent(chckbxTrabajador, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)))
 					.addGap(94)
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_socios.createSequentialGroup()
 							.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_socios.createSequentialGroup()
-									.addComponent(lblNewLabel_5_5_2_1_1_1)
-									.addPreferredGap(ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_5_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+									.addComponent(lblBaja)
+									.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+									.addComponent(lblInfoBaja, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_socios.createSequentialGroup()
-									.addComponent(lblNewLabel_5_6_1_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_5_1_2_1_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel_5_4_2_1_1, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+									.addComponent(lblAlta, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+									.addComponent(lblInfoAlta, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_socios.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_socios.createSequentialGroup()
-											.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnAlta, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_1_2_1_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnBaja, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1_2)
+											.addComponent(btnBuscar)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1_1_1))
-										.addComponent(textField_3, Alignment.LEADING, 330, 330, 330)))
+											.addComponent(btnModificar))
+										.addComponent(txtAviso, Alignment.LEADING, 330, 330, 330)))
 								.addGroup(gl_socios.createSequentialGroup()
-									.addComponent(lblNewLabel_5_5_2_1_2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+									.addComponent(lblBuscar, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
 									.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblNewLabel_5_1_2_1_1_3_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel_5_2_2_1_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
+										.addComponent(lblInfoModif, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblInfoBuscar, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
 							.addGap(25))
 						.addGroup(gl_socios.createSequentialGroup()
-							.addComponent(lblNewLabel_5_5_2_1_2_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblModificar, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 		);
 		gl_socios.setVerticalGroup(
 			gl_socios.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(26)
-					.addComponent(lblInventario_2_1_1)
+					.addComponent(lblSocio)
 					.addGap(18)
 					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_6_1_1)
-						.addComponent(lblNewLabel_5_1_2_1_2))
+						.addComponent(txtNumSocio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblAlta)
+						.addComponent(lblInfoAlta))
 					.addGap(14)
 					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_5_2_1_1_1)
-						.addComponent(lblNewLabel_5_1_2_1_1_1))
-					.addGap(6)
-					.addComponent(lblNewLabel_5_4_2_1_1)
-					.addGap(11)
+						.addComponent(txtNombreS, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBaja)
+						.addComponent(lblInfoBaja))
+					.addGap(17)
 					.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_5_2_1_2)
-						.addComponent(lblNewLabel_5_2_2_1_1))
+						.addComponent(txtFecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBuscar)
+						.addComponent(lblInfoBuscar))
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_socios.createSequentialGroup()
 							.addGap(57)
-							.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtAviso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnBaja_2_3_1_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_3_1_2)
-								.addComponent(btnBaja_2_1_2_1_2)
-								.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnBuscar)
+								.addComponent(btnBaja)
+								.addComponent(btnAlta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_socios.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblNewLabel_5_5_2_1_2_1)
-									.addComponent(lblNewLabel_5_1_2_1_1_3_1))
-								.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+									.addComponent(lblModificar)
+									.addComponent(lblInfoModif))
+								.addComponent(txtMasInfo, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
 							.addGap(2)))
 					.addGap(18)
-					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+					.addComponent(scrollSocios, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
 					.addContainerGap())
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(120)
-					.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+					.addComponent(chckbxTrabajador, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
 					.addGap(390))
 		);
+		
+		tablaSocios = new JTable();
+		scrollSocios.setViewportView(tablaSocios);
 		socios.setLayout(gl_socios);
 		GroupLayout groupLayout = new GroupLayout(frmSocios.getContentPane());
 		groupLayout.setHorizontalGroup(

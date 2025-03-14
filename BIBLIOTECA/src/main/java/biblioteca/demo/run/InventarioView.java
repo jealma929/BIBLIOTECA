@@ -7,6 +7,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.awt.event.ActionEvent;
 
 import biblioteca.demo.run.*;
@@ -21,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JFormattedTextField;
 
 
 /**
@@ -37,8 +40,9 @@ public class InventarioView {
 	private JTextField titulo;
 	private JTextField autor;
 	private JTextField edicion;
-	private JTextField textField_4;
+	private JTextField txtAviso;
 	private ButtonGroup bG_1;
+	private JTable tablaInventario;
 
 	/**
 	 * Launch the application.
@@ -75,6 +79,7 @@ public class InventarioView {
 		frmInventario.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
 		JPanel inventario = new JPanel();
+		inventario.setVisible(false);
 		inventario.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		iSBN = new JTextField();
@@ -93,47 +98,52 @@ public class InventarioView {
 		edicion.setText("< Introduzca la Edicion >");
 		edicion.setColumns(10);
 		
-		JLabel lblNewLabel_5_5_2_1 = new JLabel("BUSQUEDA");
-		lblNewLabel_5_5_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblBuscar = new JLabel("BUSQUEDA");
+		lblBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_2_2_1 = new JLabel("Rellene cualquier campo y pulse BUSCAR");
+		JLabel lblInfoBuscar = new JLabel("Rellene cualquier campo y pulse BUSCAR");
+		lblInfoBuscar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_5_2_1_1 = new JLabel("BAJA");
-		lblNewLabel_5_5_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_1_2_1_1 = new JLabel("Busque, seleccione y pulse BAJA");
+		JLabel lblBaja = new JLabel("BAJA");
+		lblBaja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_6_1 = new JLabel("ALTA");
-		lblNewLabel_5_6_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblInfoBaja = new JLabel("Busque, seleccione y pulse BAJA");
+		lblInfoBaja.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		JLabel lblNewLabel_5_1_2_1 = new JLabel("Rellene todos los campos y pulse ALTA");
+		JLabel lblAlta = new JLabel("ALTA");
+		lblAlta.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		JLabel lblInfoAlta = new JLabel("Rellene todos los campos y pulse ALTA");
+		lblInfoAlta.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		JLabel lblNewLabel_5_4_2_1 = new JLabel("");
 		
-		JButton btnBaja_2_1_2_1_1 = new JButton("ALTA");
-		btnBaja_2_1_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnAlta = new JButton("ALTA");
+		btnAlta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_1_2_1 = new JButton("BAJA");
-		btnBaja_2_1_2_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnBaja = new JButton("BAJA");
+		btnBaja.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
-		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton btnBaja_2_3_1_1 = new JButton("MODIFICAR");
-		btnBaja_2_3_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JLabel lblNewLabel_5_5_2_1_4 = new JLabel("MODIFICAR");
-		lblNewLabel_5_5_2_1_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel lblModificar = new JLabel("MODIFICAR");
+		lblModificar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5_1_2_1_1_3 = new JLabel("Busque, cambie campos y pulse MODIFICAR");
+		JLabel lblInfoModificar = new JLabel("Busque, cambie campos y pulse MODIFICAR");
+		lblInfoModificar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		textField_4 = new JTextField();
-		textField_4.setForeground(Color.RED);
-		textField_4.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textField_4.setEditable(false);
-		textField_4.setDisabledTextColor(Color.RED);
-		textField_4.setColumns(10);
-		textField_4.setCaretColor(Color.RED);
+		txtAviso = new JTextField();
+		txtAviso.setForeground(Color.RED);
+		txtAviso.setFont(new Font("Tahoma", Font.BOLD, 11));
+		txtAviso.setEditable(false);
+		txtAviso.setDisabledTextColor(Color.RED);
+		txtAviso.setColumns(10);
+		txtAviso.setCaretColor(Color.RED);
 		
 		bG_1 = new ButtonGroup();
 		
@@ -145,10 +155,11 @@ public class InventarioView {
 		rdbtnAdulto.setAlignmentY(0.0f);
 		bG_1.add(rdbtnAdulto);
 		
-		JLabel lblInventario_2_1 = new JLabel("INVENTARIO");
-		lblInventario_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JLabel lblInventario = new JLabel("INVENTARIO");
+		lblInventario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JScrollPane scrollPane_1_2_2_1 = new JScrollPane();
+		JScrollPane scrollInventario = new JScrollPane();
+		
 		GroupLayout gl_inventario = new GroupLayout(inventario);
 		gl_inventario.setHorizontalGroup(
 			gl_inventario.createParallelGroup(Alignment.LEADING)
@@ -164,34 +175,34 @@ public class InventarioView {
 							.addGap(94)
 							.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_inventario.createSequentialGroup()
-									.addComponent(lblNewLabel_5_5_2_1, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_5_2_2_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
+									.addComponent(lblBuscar, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+									.addComponent(lblInfoBuscar, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_inventario.createSequentialGroup()
-									.addComponent(lblNewLabel_5_5_2_1_1)
-									.addPreferredGap(ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_5_1_2_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+									.addComponent(lblBaja)
+									.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+									.addComponent(lblInfoBaja, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_inventario.createSequentialGroup()
-									.addComponent(lblNewLabel_5_6_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-									.addComponent(lblNewLabel_5_1_2_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel_5_4_2_1, GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+									.addComponent(lblAlta, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+									.addComponent(lblInfoAlta, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblNewLabel_5_4_2_1, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
 								.addGroup(gl_inventario.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_inventario.createSequentialGroup()
-											.addComponent(btnBaja_2_1_2_1_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnAlta, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_1_2_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnBaja, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1)
+											.addComponent(btnBuscar)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1_1))
+											.addComponent(btnModificar))
 										.addGroup(gl_inventario.createSequentialGroup()
-											.addComponent(lblNewLabel_5_5_2_1_4, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-											.addComponent(lblNewLabel_5_1_2_1_1_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-										.addComponent(textField_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))))
+											.addComponent(lblModificar, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+											.addComponent(lblInfoModificar, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
+										.addComponent(txtAviso, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))))
 							.addGap(26))
 						.addGroup(gl_inventario.createSequentialGroup()
 							.addGap(63)
@@ -201,40 +212,40 @@ public class InventarioView {
 					.addContainerGap())
 				.addGroup(gl_inventario.createSequentialGroup()
 					.addGap(332)
-					.addComponent(lblInventario_2_1, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+					.addComponent(lblInventario, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
 					.addGap(354))
 				.addGroup(gl_inventario.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane_1_2_2_1, GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+					.addComponent(scrollInventario, GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
 					.addGap(16))
 		);
 		gl_inventario.setVerticalGroup(
 			gl_inventario.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_inventario.createSequentialGroup()
 					.addGap(26)
-					.addComponent(lblInventario_2_1)
+					.addComponent(lblInventario)
 					.addGap(18)
 					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
 						.addComponent(iSBN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_6_1)
-						.addComponent(lblNewLabel_5_1_2_1))
+						.addComponent(lblAlta)
+						.addComponent(lblInfoAlta))
 					.addGap(14)
 					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
 						.addComponent(titulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_5_2_1_1)
-						.addComponent(lblNewLabel_5_1_2_1_1))
+						.addComponent(lblBaja)
+						.addComponent(lblInfoBaja))
 					.addGap(6)
 					.addComponent(lblNewLabel_5_4_2_1)
 					.addGap(11)
 					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
 						.addComponent(autor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_5_2_1)
-						.addComponent(lblNewLabel_5_2_2_1))
+						.addComponent(lblBuscar)
+						.addComponent(lblInfoBuscar))
 					.addGap(18)
 					.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
 						.addComponent(edicion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_5_5_2_1_4)
-						.addComponent(lblNewLabel_5_1_2_1_1_3))
+						.addComponent(lblModificar)
+						.addComponent(lblInfoModificar))
 					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
 					.addGroup(gl_inventario.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_inventario.createSequentialGroup()
@@ -243,17 +254,20 @@ public class InventarioView {
 								.addComponent(rdbtnAdulto))
 							.addGap(44))
 						.addGroup(gl_inventario.createSequentialGroup()
-							.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtAviso, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnBaja_2_3_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_3_1)
-								.addComponent(btnBaja_2_1_2_1)
-								.addComponent(btnBaja_2_1_2_1_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnBuscar)
+								.addComponent(btnBaja)
+								.addComponent(btnAlta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
 					.addGap(18)
-					.addComponent(scrollPane_1_2_2_1, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+					.addComponent(scrollInventario, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
 					.addContainerGap())
 		);
+		
+		tablaInventario = new JTable();
+		scrollInventario.setViewportView(tablaInventario);
 		inventario.setLayout(gl_inventario);
 		GroupLayout groupLayout = new GroupLayout(frmInventario.getContentPane());
 		groupLayout.setHorizontalGroup(

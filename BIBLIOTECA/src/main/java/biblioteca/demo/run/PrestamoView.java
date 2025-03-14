@@ -1,6 +1,7 @@
 package biblioteca.demo.run;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 import javax.swing.BoxLayout;
@@ -25,6 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFormattedTextField;
 
+import java.time.*;
 
 /**
  * Punto de entrada principal que incluye botones para la ejecucion de las pantallas 
@@ -95,7 +97,6 @@ public class PrestamoView {
 		numSocio.setColumns(10);
 		
 		fechaAlta = new JTextField();
-		fechaAlta.setText("< Fecha Alta >");
 		fechaAlta.setEditable(false);
 		fechaAlta.setColumns(10);
 		
@@ -120,16 +121,19 @@ public class PrestamoView {
 		busca.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel buscaInfo = new JLabel("Rellene cualquier campo y pulse BUSCAR");
+		buscaInfo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		JLabel lbl02 = new JLabel("BAJA");
 		lbl02.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel bajaInfo = new JLabel("Busque, seleccione y pulse BAJA");
+		bajaInfo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		JLabel lbl01 = new JLabel("ALTA");
 		lbl01.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel altaInfo = new JLabel("Rellene todos los campos y pulse ALTA");
+		altaInfo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		txtAviso = new JTextField();
 		txtAviso.setForeground(Color.RED);
@@ -148,8 +152,6 @@ public class PrestamoView {
 		JButton botonBuscar = new JButton("BUSCAR");
 		botonBuscar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JFormattedTextField formFechaAlta = new JFormattedTextField();
-		formFechaAlta.setEditable(false);
 		GroupLayout gl_prestamo = new GroupLayout(prestamo);
 		gl_prestamo.setHorizontalGroup(
 			gl_prestamo.createParallelGroup(Alignment.LEADING)
@@ -170,8 +172,7 @@ public class PrestamoView {
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(fechaAlta, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-								.addComponent(tiempoPrestamo)
-								.addComponent(formFechaAlta))
+								.addComponent(tiempoPrestamo))
 							.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_prestamo.createSequentialGroup()
 									.addGap(18)
@@ -237,8 +238,7 @@ public class PrestamoView {
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
 										.addComponent(botonBuscar)
 										.addComponent(botonBaja)
-										.addComponent(botonAlta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-										.addComponent(formFechaAlta, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+										.addComponent(botonAlta, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
 								.addGroup(gl_prestamo.createSequentialGroup()
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_prestamo.createSequentialGroup()
@@ -272,4 +272,6 @@ public class PrestamoView {
 		// Hacemos visible el frame
 		frmPrestamo.setVisible(true);
 	}
+
+		
 }

@@ -80,7 +80,7 @@ public class BibliotecaView {
 		frmBiblioteca.setResizable(false);
 		frmBiblioteca.setBackground(new Color(0, 0, 255));
 		frmBiblioteca.setTitle("Gestion de BIBLIOTECA");
-		frmBiblioteca.setBounds(0, 0, 800, 600);
+		frmBiblioteca.setBounds(0, 0, 815, 600);
 		frmBiblioteca.setVisible(true);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -111,6 +111,10 @@ public class BibliotecaView {
 		btnBaja_2_1_2_1_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBaja_2_3_1_3 = new JButton("BUSCAR");
+		btnBaja_2_3_1_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBaja_2_3_1_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblNewLabel_5_5_2_1_3 = new JLabel("BUSQUEDA");
@@ -164,12 +168,12 @@ public class BibliotecaView {
 			gl_prestamo.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_prestamo.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+					.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
 					.addGap(16))
 				.addGroup(gl_prestamo.createSequentialGroup()
-					.addGap(332)
+					.addGap(330)
 					.addComponent(lblInventario_2_1_2)
-					.addContainerGap(367, Short.MAX_VALUE))
+					.addContainerGap(377, Short.MAX_VALUE))
 				.addGroup(gl_prestamo.createSequentialGroup()
 					.addGap(44)
 					.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
@@ -188,33 +192,33 @@ public class BibliotecaView {
 									.addGap(40)
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 										.addComponent(rdbtn30)
-										.addComponent(rdbtn15, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-					.addGap(94)
+										.addComponent(rdbtn15, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))))))
+					.addGap(75)
 					.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addComponent(lblNewLabel_5_5_2_1_3, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
 							.addComponent(lblNewLabel_5_2_2_1_2, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addComponent(lblNewLabel_5_5_2_1_1_2)
-							.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
 							.addComponent(lblNewLabel_5_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addComponent(lblNewLabel_5_6_1_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
 							.addComponent(lblNewLabel_5_1_2_1_3, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel_5_4_2_1_2, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_5_4_2_1_2, GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textField_32, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+								.addComponent(textField_32, GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
 								.addGroup(gl_prestamo.createSequentialGroup()
-									.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnBaja_2_1_2_1_3, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnBaja_2_3_1_3)
-									.addGap(109)))))
+									.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+									.addGap(5)
+									.addComponent(btnBaja_2_1_2_1_3, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+									.addGap(5)
+									.addComponent(btnBaja_2_3_1_3, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 98, Short.MAX_VALUE)))))
 					.addGap(25))
 		);
 		gl_prestamo.setVerticalGroup(
@@ -246,9 +250,9 @@ public class BibliotecaView {
 									.addComponent(textField_32, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnBaja_2_3_1_3)
-										.addComponent(btnBaja_2_1_2_1_3)
-										.addComponent(btnBaja_2_1_2_1_1_2, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+										.addComponent(btnBaja_2_1_2_1_3)))
 								.addGroup(gl_prestamo.createSequentialGroup()
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_prestamo.createSequentialGroup()
@@ -262,7 +266,7 @@ public class BibliotecaView {
 										.addComponent(textField_23, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 							.addGap(18)
-							.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+							.addComponent(scrollPane_1_2_2_1_2, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addGap(136)
 							.addComponent(rdbtn15)))
@@ -292,12 +296,20 @@ public class BibliotecaView {
 		textField_29.setColumns(10);
 		
 		JButton btnBaja_2_1_2_1_1_1 = new JButton("ALTA");
+		btnBaja_2_1_2_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBaja_2_1_2_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBaja_2_1_2_1_2 = new JButton("BAJA");
 		btnBaja_2_1_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBaja_2_3_1_2 = new JButton("BUSCAR");
+		btnBaja_2_3_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBaja_2_3_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBaja_2_3_1_1_1 = new JButton("MODIFICAR");
@@ -351,54 +363,54 @@ public class BibliotecaView {
 			gl_socios.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_socios.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
 					.addGap(16))
 				.addGroup(gl_socios.createSequentialGroup()
-					.addGap(348)
+					.addGap(338)
 					.addComponent(lblInventario_2_1_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(367, Short.MAX_VALUE))
+					.addContainerGap(377, Short.MAX_VALUE))
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(44)
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
-						.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-						.addComponent(textField_27, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-						.addComponent(textField_28, 288, 288, Short.MAX_VALUE)
+						.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+						.addComponent(textField_27, GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+						.addComponent(textField_28, 288, 295, Short.MAX_VALUE)
 						.addGroup(gl_socios.createSequentialGroup()
 							.addComponent(textField_29, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
 							.addGap(57)
-							.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
-					.addGap(94)
+							.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)))
+					.addGap(75)
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_socios.createSequentialGroup()
 							.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_socios.createSequentialGroup()
 									.addComponent(lblNewLabel_5_5_2_1_1_1)
-									.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
 									.addComponent(lblNewLabel_5_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_socios.createSequentialGroup()
 									.addComponent(lblNewLabel_5_6_1_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
 									.addComponent(lblNewLabel_5_1_2_1_2, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel_5_4_2_1_1, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_5_4_2_1_1, GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
 								.addGroup(gl_socios.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING)
+									.addGap(0)
+									.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING, false)
 										.addGroup(gl_socios.createSequentialGroup()
-											.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_1_2_1_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1_2)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnBaja_2_3_1_1_1))
+											.addComponent(btnBaja_2_1_2_1_1_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addGap(5)
+											.addComponent(btnBaja_2_1_2_1_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addGap(5)
+											.addComponent(btnBaja_2_3_1_2, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addGap(5)
+											.addComponent(btnBaja_2_3_1_1_1, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
 										.addComponent(textField_31, Alignment.LEADING, 330, 330, 330)))
 								.addGroup(gl_socios.createSequentialGroup()
 									.addComponent(lblNewLabel_5_5_2_1_2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
 									.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblNewLabel_5_1_2_1_1_3_1, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
 										.addComponent(lblNewLabel_5_2_2_1_1, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE))))
-							.addGap(25))
+							.addGap(40))
 						.addGroup(gl_socios.createSequentialGroup()
 							.addComponent(lblNewLabel_5_5_2_1_2_1, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
@@ -441,14 +453,14 @@ public class BibliotecaView {
 								.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblNewLabel_5_5_2_1_2_1)
 									.addComponent(lblNewLabel_5_1_2_1_1_3_1))
-								.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+								.addComponent(textArea_1, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
 							.addGap(2)))
 					.addGap(18)
-					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+					.addComponent(scrollPane_1_2_2_1_1, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
 					.addContainerGap())
 				.addGroup(gl_socios.createSequentialGroup()
 					.addGap(136)
-					.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(chckbxNewCheckBox_1, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
 					.addGap(374))
 		);
 		
@@ -459,9 +471,8 @@ public class BibliotecaView {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(3)
-					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
-					.addContainerGap())
+					.addGap(1)
+					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 796, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
