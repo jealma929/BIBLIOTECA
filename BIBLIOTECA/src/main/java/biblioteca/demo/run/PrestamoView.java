@@ -25,7 +25,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFormattedTextField;
-
+import javax.swing.BorderFactory;
 import java.time.*;
 
 /**
@@ -71,6 +71,14 @@ public class PrestamoView {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	/**
+	 * notas sobre bordes
+	 * 
+	 * JTextField.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+	 * JTextField.setBorder(BorderFactory.createBevelBorder());
+	 * JTextField.setBorder(BorderFactory.createLoweredBevelBorder());
+	 * 
+	 */
 	private void initialize() {
 		frmPrestamo = new JFrame();
 		frmPrestamo.setResizable(false);
@@ -79,6 +87,7 @@ public class PrestamoView {
 		frmPrestamo.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 				
 		JPanel prestamo = new JPanel();
+		
 		prestamo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		JScrollPane scrollPane_1_2_2_1_2 = new JScrollPane();
@@ -87,16 +96,18 @@ public class PrestamoView {
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		iSBN = new JTextField();
-		
+		iSBN.setBorder(BorderFactory.createLoweredBevelBorder());
 		iSBN.setText("< Introduzca el ISBN del libro >");
 		iSBN.setColumns(10);
 		
 		
 		numSocio = new JTextField();
+		numSocio.setBorder(BorderFactory.createLoweredBevelBorder());
 		numSocio.setText("< Introduzca el Numero de socio >");
 		numSocio.setColumns(10);
 		
 		fechaAlta = new JTextField();
+		fechaAlta.setBorder(BorderFactory.createLoweredBevelBorder());
 		fechaAlta.setEditable(false);
 		fechaAlta.setColumns(10);
 		
