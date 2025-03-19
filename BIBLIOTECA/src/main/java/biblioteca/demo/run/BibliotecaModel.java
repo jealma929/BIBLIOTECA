@@ -1,5 +1,5 @@
 package biblioteca.demo.run;
 
-public class BibliotecaControler {
+public class BibliotecaModel {
 
 }

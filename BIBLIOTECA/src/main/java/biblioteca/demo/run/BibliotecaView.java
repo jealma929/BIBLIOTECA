@@ -46,8 +46,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JEditorPane;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class BibliotecaView {
 	
@@ -69,9 +75,12 @@ public class BibliotecaView {
 	private JTextField tFAvisosP;
 	private JTextField tFFechaDevolucion;
 	private JTable tablaPrestamo;
-	
 	private ButtonGroup grupoBoton_1;
 	private ButtonGroup grupoBoton_2;
+	protected int duracion;
+	
+	private BibliotecaController controller;
+	private JCheckBox cBoxTrabajador;
 	
 	//*********** Devuelve la fecha con incremento
 	public static String asignaFecha (int i) {
@@ -86,13 +95,12 @@ public class BibliotecaView {
 
 	
 	
-	
 		
-	public BibliotecaView() {		// inicializamos la biblioteca
-		initialize ();
+	public BibliotecaView(BibliotecaController controlador) {		// inicializamos la biblioteca
+		initialize (controlador);
 	}
 	
-	private void initialize() {
+	private void initialize(BibliotecaController controlador) {
 		
 		frmBiblioteca = new JFrame();
 		frmBiblioteca.setResizable(false);
@@ -100,6 +108,8 @@ public class BibliotecaView {
 		frmBiblioteca.setTitle("Gestion de BIBLIOTECA");
 		frmBiblioteca.setBounds(0, 0, 815, 600);
 		frmBiblioteca.setVisible(true);
+		//ahora vinculamos la vista con el controlador que creo en el swingMain
+		this.controller = controlador;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
@@ -122,6 +132,12 @@ public class BibliotecaView {
 		tFFechaAlta.setText(asignaFecha (0));
 		tFFechaAlta.setEditable(false);
 		tFFechaAlta.setColumns(10);
+		
+		tFFechaDevolucion = new JTextField();
+		tFFechaDevolucion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		//tFFechaDevolucion.setText(asignaFecha (duracion));
+		tFFechaDevolucion.setEditable(false);
+		tFFechaDevolucion.setColumns(10);
 		
 		JButton btnAltaP = new JButton("ALTA");
 		btnAltaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -167,31 +183,32 @@ public class BibliotecaView {
 		JRadioButton rdbtn15 = new JRadioButton("15 Dias");
 		rdbtn15.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
+				if (rdbtn15.isSelected()) {
+					duracion = 15;
+					tFFechaDevolucion.setText(asignaFecha (duracion));
+				}
 			}
 		});
 		rdbtn15.setSelected(true);
-		grupoBoton_1.add(rdbtn15);
+		grupoBoton_1.add(rdbtn15);		
 		
 		JRadioButton rdbtn30 = new JRadioButton("30 Dias");
 		rdbtn30.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
+				if (rdbtn30.isSelected()) {
+					duracion = 30;
+					tFFechaDevolucion.setText(asignaFecha (duracion));
+				}
 			}
 		});
 		rdbtn30.setAlignmentY(0.0f);
 		grupoBoton_1.add(rdbtn30);
-		
-		int duracion = 15;
-		
+									
 		JLabel lblPrestamo = new JLabel("PRESTAMO");
 		lblPrestamo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JScrollPane scrollPrestamo = new JScrollPane();
 		
-		tFFechaDevolucion = new JTextField();
-		tFFechaDevolucion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		tFFechaDevolucion.setText(asignaFecha (duracion));
-		tFFechaDevolucion.setEditable(false);
-		tFFechaDevolucion.setColumns(10);
 		
 		JLabel lblDuracion = new JLabel("Duración del Prestamo");
 		
@@ -341,13 +358,73 @@ public class BibliotecaView {
 		tFNumS.setText("< Introduzca el Numero de socio  >");
 		tFNumS.setColumns(10);
 		
+		tFNumS.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				tFNumS.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				String text = tFNumS.getText();
+				tfAvisosS.setText("saliendo de foco"+"**"+text+"**");
+				if (text == "") {
+					tFNumS.setText("< Introduzca el Numero de socio  >");
+				}
+			}
+		});
+		
 		tFNombreS = new JTextField();
 		tFNombreS.setText("< Introduzca el Nombre completo >");
 		tFNombreS.setColumns(10);
 		
+		tFNombreS.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				tFNombreS.setText("");
+			}
+		});
+		
 		tFFechaNacimiento = new JTextField();
-		tFFechaNacimiento.setText("< Fecha de nacimiento >");
+		tFFechaNacimiento.setText("< F. de nacimiento >");
 		tFFechaNacimiento.setColumns(10);
+		
+		tFFechaNacimiento.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				tFFechaNacimiento.setText("");
+			}
+		});
+		
+		//******************** asigna un documentlistener
+        tFFechaNacimiento.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+            public void insertUpdate(DocumentEvent e) {
+                validateDate();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                validateDate();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                validateDate();
+            }
+            
+            // **************** valida los datos con el formato
+            private void validateDate() {
+            	
+                try {
+                	LocalDate.parse(tFFechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                	tfAvisosS.setText("Fecha válida --> " + tFFechaNacimiento.getText());
+                } catch (DateTimeParseException e) {
+                    tfAvisosS.setText("Fecha no válida. Formato fecha : dd/mm/aaaa");
+                }
+            }
+        });
+
 		
 		JButton btnAltaS = new JButton("ALTA");
 		btnAltaS.addActionListener(new ActionListener() {
@@ -400,7 +477,20 @@ public class BibliotecaView {
 		
 		JScrollPane scrollSocios = new JScrollPane();
 		
-		JCheckBox cBoxTrabajador = new JCheckBox("Trabajador");
+		cBoxTrabajador = new JCheckBox("Trabajador");
+		cBoxTrabajador.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				int trabajador = 0;
+				if (cBoxTrabajador.isSelected()) {
+					trabajador = 1;
+					tfAvisosS.setText("1"); //prueba de funcionamiento 
+				}
+				else {
+					trabajador = 0;
+					tfAvisosS.setText("0"); // prueba de funcionamiento
+				}
+			}
+		});
 		
 		JTextArea tAMAS = new JTextArea();
 		tAMAS.setLineWrap(true);
@@ -523,14 +613,14 @@ public class BibliotecaView {
 			new Object[][] {
 			},
 			new String[] {
-				"Numero de Socio", "Nombre", "Fecha Nacimiento", "Trabajador", "Mas Info ..."
+				"Num. Socio", "Nombre", "F. Nacimiento", "Trabajador", "Mas Info ..."
 			}
 		));
 		tablaSocios.getColumnModel().getColumn(0).setPreferredWidth(95);
 		tablaSocios.getColumnModel().getColumn(1).setPreferredWidth(240);
 		tablaSocios.getColumnModel().getColumn(2).setPreferredWidth(95);
-		tablaSocios.getColumnModel().getColumn(3).setPreferredWidth(65);
-		tablaSocios.getColumnModel().getColumn(4).setPreferredWidth(300);
+		tablaSocios.getColumnModel().getColumn(3).setPreferredWidth(69);
+		tablaSocios.getColumnModel().getColumn(4).setPreferredWidth(295);
 		scrollSocios.setViewportView(tablaSocios);
 		socios.setLayout(gl_socios);
 		GroupLayout groupLayout = new GroupLayout(frmBiblioteca.getContentPane());
@@ -751,4 +841,11 @@ public class BibliotecaView {
 		frmBiblioteca.getContentPane().setLayout(groupLayout);
 		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tfEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBaja_2_3_1, btnBuscarI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion}));
 	}
+
+	public JFrame getFrame() {
+		// TODO Auto-generated method stub
+		return this.frmBiblioteca;
+	}
+
+	
 }

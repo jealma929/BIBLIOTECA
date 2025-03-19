@@ -65,7 +65,9 @@ public class SwingMain {
 		JButton btnNewButton = new JButton("TODAS LAS FUNCIONES");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BibliotecaView biblioteca = new BibliotecaView();	}
+				BibliotecaController controller = new BibliotecaController();
+				controller.setVistaModel(new BibliotecaView(controller), new BibliotecaModel());
+			}
 		});
 		
 		JButton btnNewButton_1 = new JButton("PRESTAMOS");
