@@ -15,5 +15,14 @@ public class BibliotecaController {
 		
 		this.view.getFrame().setVisible(true);
 	}
+	
+	public void BuscaPrestamo(String s) {
+		int i;
+		List<Object[]> lista=model.BuscaPrestamo(s);
+		
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaPrestamo(lista.get(i));
+		}
+	}
 
 }

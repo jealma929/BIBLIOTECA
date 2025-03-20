@@ -52,7 +52,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -237,6 +236,8 @@ public class BibliotecaView {
 		JButton btnBuscarP = new JButton("BUSCAR");
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//controller.BuscarPrestamo(BuscaConsulta(prestamo); //posible generalizacion de busqueda
+				controller.BuscarPrestamo(tFNumSP.getText());
 			}
 		});
 		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -434,7 +435,15 @@ public class BibliotecaView {
 		scrollPrestamo.setViewportView(tablaPrestamo);
 		prestamo.setLayout(gl_prestamo);
 		
+		
 		/** SOCIOS comienza el panel de socios **/
+		
+		modeloSocios = new DefaultTableModel(new Object[][] {
+				},
+				new String[] {
+					"Num. Socio", "Nombre", "F. Nacimiento", "Trabajador", "Mas Info ..."
+				}
+		);
 		
 		JPanel socios = new JPanel();
 		socios.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -699,13 +708,7 @@ public class BibliotecaView {
 		);
 		
 		tablaSocios = new JTable();
-		tablaSocios.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Num. Socio", "Nombre", "F. Nacimiento", "Trabajador", "Mas Info ..."
-			}
-		));
+		tablaSocios.setModel(modeloSocios);
 		tablaSocios.getColumnModel().getColumn(0).setPreferredWidth(95);
 		tablaSocios.getColumnModel().getColumn(1).setPreferredWidth(240);
 		tablaSocios.getColumnModel().getColumn(2).setPreferredWidth(95);
@@ -725,7 +728,17 @@ public class BibliotecaView {
 				.addComponent(tabbedPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
 		);
 		
+		
 		/** INVENTARIO comienza el panel inventario **/
+		
+		modeloInventario = new DefaultTableModel( new Object[][] {
+				},
+				new String[] {
+					"ISBN", "Titulo", "Autor", "Edicion", "Categoria"
+				}
+			);
+		
+		
 		
 		JPanel inventario = new JPanel();
 		inventario.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -926,13 +939,7 @@ public class BibliotecaView {
 		);
 		
 		tablaInventario = new JTable();
-		tablaInventario.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ISBN", "Titulo", "Autor", "Edicion", "Categoria"
-			}
-		));
+		tablaInventario.setModel(modeloInventario);
 		tablaInventario.getColumnModel().getColumn(0).setPreferredWidth(100);
 		tablaInventario.getColumnModel().getColumn(1).setPreferredWidth(261);
 		tablaInventario.getColumnModel().getColumn(2).setPreferredWidth(250);
@@ -946,5 +953,12 @@ public class BibliotecaView {
 	public JFrame getFrame() {
 		// TODO Auto-generated method stub
 		return this.frmBiblioteca;
+	}
+
+	public void rellenatablaPrestamo(Object[] rowPrestamo) {
+		// TODO Auto-generated method stub
+		this.modeloPrestamo.addRow(rowPrestamo);
+		this.tablaInventario.setModel(modeloPrestamo);
+		
 	}
 }
