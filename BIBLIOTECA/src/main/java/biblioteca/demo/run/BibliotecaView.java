@@ -52,6 +52,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
@@ -80,9 +82,15 @@ public class BibliotecaView {
 	private ButtonGroup grupoBoton_1;
 	private ButtonGroup grupoBoton_2;
 	protected int duracion;
+	private JTextArea tAMAS;
+	
+	private DefaultTableModel modeloPrestamo;
+	private DefaultTableModel modeloSocios;
+	private DefaultTableModel modeloInventario;
 	
 	private BibliotecaController controller;
 	private JCheckBox cBoxTrabajador;
+	private JPanel prestamo;
 	
 	//*********** Devuelve la fecha con incremento
 	public static String asignaFecha (int i) {
@@ -93,8 +101,70 @@ public class BibliotecaView {
 		return fecha;
 	}
 	
-	//*********** 
+	//*********** Devuelve el formato inicial a los JTextFiel
+	/**
+	private void  cambiaFoco(JTextField nombre) {
+		String comentario = nombre.getText();
+		nombre.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				
+					nombre.setText("");
+				
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+			String text =nombre.getText();
+			if (text.isEmpty()) {
+				nombre.setText(comentario);
+			}
+		}
+	}); 
+	}
+	**/
+	
+	//***********Devuelve el formato inicial de los JTextArea
+	public void  cambiaFoco2(JTextArea nombre, String comentario) {
+		
+		nombre.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				String text =nombre.getText();
+				if (text.equals(comentario)) {
+					nombre.setText("");
+				}	
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				String text =nombre.getText();
+				if (text.isEmpty()) {
+					nombre.setText(comentario);
+			}
+		}
+	}); 
+	}	
 
+	
+	//*********** Devuelve el formato inicial a los JTextFile
+	private void  cambiaFoco(JTextField nombre, String comentario) {
+		
+		nombre.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				String text =nombre.getText();
+				if (text.equals(comentario)) {
+					nombre.setText("");
+				}	
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				String text =nombre.getText();
+				if (text.isEmpty()) {
+					nombre.setText(comentario);
+			}
+		}
+	}); 
+	}
 	
 	
 		
@@ -118,22 +188,32 @@ public class BibliotecaView {
 		
 		/** PRESTAMO comienza esta pestaña **/
 		
-		JPanel prestamo = new JPanel();
+		modeloPrestamo = new DefaultTableModel (new Object[][] {
+				},
+				new String[] {
+					"ISBN Libro", "Numero de Socio", "Fecha de Prestamo", "Fecha de Devoluci\u00F3n"
+				}
+			);
+		
+		prestamo = new JPanel();
 		prestamo.setBorder(BorderFactory.createRaisedBevelBorder());
 		tabbedPane.addTab("            PRESTAMO         ", null, prestamo, null);
 		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		tabbedPane.setBorder(BorderFactory.createRaisedBevelBorder());
 		prestamo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
+		
 		tFIsbnP = new JTextField();
 		tFIsbnP.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFIsbnP.setText("< Introduzca el ISBN del libro >");
 		tFIsbnP.setColumns(10);
+		cambiaFoco(tFIsbnP,"< Introduzca el ISBN del libro >");
 		
 		tFNumSP = new JTextField();
 		tFNumSP.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNumSP.setText("< Introduzca el Numero de socio >");
 		tFNumSP.setColumns(10);
+		cambiaFoco(tFNumSP,"< Introduzca el Numero de socio >");
 		
 		tFFechaAlta = new JTextField();
 		tFFechaAlta.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -346,13 +426,8 @@ public class BibliotecaView {
 		
 		tablaPrestamo = new JTable();
 		tablaPrestamo.setCellSelectionEnabled(true);
-		tablaPrestamo.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ISBN Libro", "Numero de Socio", "Fecha de Prestamo", "Fecha de Devoluci\u00F3n"
-			}
-		));
+		tablaPrestamo.setModel(modeloPrestamo);
+				
 		tablaPrestamo.getColumnModel().getColumn(1).setPreferredWidth(100);
 		tablaPrestamo.getColumnModel().getColumn(2).setPreferredWidth(102);
 		tablaPrestamo.getColumnModel().getColumn(3).setPreferredWidth(115);
@@ -370,7 +445,8 @@ public class BibliotecaView {
 		tFNumS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNumS.setText("< Introduzca el Numero de socio  >");
 		tFNumS.setColumns(10);
-		
+		cambiaFoco(tFNumS,"< Introduzca el Numero de socio  >");
+		/**
 		tFNumS.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -379,37 +455,31 @@ public class BibliotecaView {
 			@Override
 			public void focusLost(FocusEvent e) {
 				String text = tFNumS.getText();
-				tfAvisosS.setText("saliendo de foco"+"**"+text+"**");
-				if (text == "") {
+				if (text.isEmpty()) {
 					tFNumS.setText("< Introduzca el Numero de socio  >");
 				}
 			}
 		});
-		
+		**/
 		tFNombreS = new JTextField();
 		tFNombreS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNombreS.setText("< Introduzca el Nombre completo >");
-		tFNombreS.setColumns(10);
-		
-		tFNombreS.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				tFNombreS.setText("");
-			}
-		});
-		
+		tFNombreS.setColumns(10); 	
+		cambiaFoco(tFNombreS,"< Introduzca el Nombre completo >");
+				
 		tFFechaNacimiento = new JTextField();
 		tFFechaNacimiento.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFFechaNacimiento.setText("< F. de nacimiento >");
 		tFFechaNacimiento.setColumns(10);
-		
+		cambiaFoco(tFFechaNacimiento,"< F. de nacimiento >");
+		/**
 		tFFechaNacimiento.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
 				tFFechaNacimiento.setText("");
 			}
 		});
-		
+		**/
 		//******************** asigna un documentlistener
         tFFechaNacimiento.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -427,10 +497,10 @@ public class BibliotecaView {
             public void changedUpdate(DocumentEvent e) {
                 validateDate();
             }
-            
+           
             // **************** valida los datos con el formato
             private void validateDate() {
-            	
+        
                 try {
                 	LocalDate.parse(tFFechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 	tfAvisosS.setText("Fecha válida --> " + tFFechaNacimiento.getText());
@@ -438,8 +508,9 @@ public class BibliotecaView {
                     tfAvisosS.setText("Fecha no válida. Formato fecha : dd/mm/aaaa");
                 }
             }
+            
         });
-
+        
 		
 		JButton btnAltaS = new JButton("ALTA");
 		btnAltaS.addActionListener(new ActionListener() {
@@ -509,13 +580,14 @@ public class BibliotecaView {
 			}
 		});
 		
-		JTextArea tAMAS = new JTextArea();
+		tAMAS = new JTextArea();
 		tAMAS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tAMAS.setLineWrap(true);
 		tAMAS.setPreferredSize(new Dimension(288, 100));
 		tAMAS.setMaximumSize(new Dimension(288, 100));
 		tAMAS.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tAMAS.setText("< Mas informacion >");
+		cambiaFoco2(tAMAS,"< Mas informacion >");
 		
 		JLabel lblModS = new JLabel("MODIFICAR");
 		lblModS.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -667,21 +739,25 @@ public class BibliotecaView {
 		tFEdicion.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFEdicion.setText("< Introduzca la Edicion >");
 		tFEdicion.setColumns(10);
+		cambiaFoco(tFEdicion,"< Introduzca la Edicion >");
 		
 		tFIsbn = new JTextField();
 		tFIsbn.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFIsbn.setText("< Introduzca el ISBN del libro >");
 		tFIsbn.setColumns(10);
+		cambiaFoco(tFIsbn,"< Introduzca el ISBN del libro >");
 		
 		tFTitulo = new JTextField();
 		tFTitulo.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFTitulo.setText("< Introduzca el Titulo >");
 		tFTitulo.setColumns(10);
+		cambiaFoco(tFTitulo,"< Introduzca el Titulo >");
 		
 		tFAutor = new JTextField();
 		tFAutor.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFAutor.setText("< Introduzca el Autor >");
 		tFAutor.setColumns(10);
+		cambiaFoco(tFAutor,"< Introduzca el Autor >");
 		
 		JLabel lblAltaI = new JLabel("ALTA");
 		lblAltaI.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -871,6 +947,4 @@ public class BibliotecaView {
 		// TODO Auto-generated method stub
 		return this.frmBiblioteca;
 	}
-
-	
 }
