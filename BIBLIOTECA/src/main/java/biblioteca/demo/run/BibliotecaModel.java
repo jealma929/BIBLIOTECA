@@ -7,14 +7,17 @@ public class BibliotecaModel {
 
 	Database db = new Database();
 	
-	public List<Object[]> BuscaPrestamo(String s) {
+	public List<Object[]> BuscarPrestamo(String s) {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
-			
-		String sql = "SELECT * FROM PRESTAMO WHERE SOCIO =?";
-		
-		lista =db.executeQueryArray(sql, s);
-		
+		String sql;
+			if (s.equals("*")) {
+				sql= "SELECT * FROM PRESTAMO";
+				lista =db.executeQueryArray(sql);
+			} else {
+				sql = "SELECT * FROM PRESTAMO WHERE SOCIO =?";
+				lista =db.executeQueryArray(sql, s);
+			}
 		return lista;
 	}
 

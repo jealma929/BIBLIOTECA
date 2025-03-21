@@ -70,7 +70,7 @@ public class BibliotecaView {
 	private JTextField tFNumS;
 	private JTextField tFNombreS;
 	private JTextField tFFechaNacimiento;
-	private JTextField tfAvisosS;
+	private JTextField tFAvisosS;
 	private JTable tablaSocios;
 	private JTextField tFIsbnP;
 	private JTextField tFNumSP;
@@ -183,6 +183,7 @@ public class BibliotecaView {
 		this.controller = controlador;
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFocusTraversalKeysEnabled(false);
 		tabbedPane.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		/** PRESTAMO comienza esta pestaña **/
@@ -195,6 +196,7 @@ public class BibliotecaView {
 			);
 		
 		prestamo = new JPanel();
+		prestamo.setFocusTraversalKeysEnabled(false);
 		prestamo.setBorder(BorderFactory.createRaisedBevelBorder());
 		tabbedPane.addTab("            PRESTAMO         ", null, prestamo, null);
 		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -203,18 +205,21 @@ public class BibliotecaView {
 		
 		
 		tFIsbnP = new JTextField();
+		tFIsbnP.setFocusTraversalKeysEnabled(false);
 		tFIsbnP.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFIsbnP.setText("< Introduzca el ISBN del libro >");
 		tFIsbnP.setColumns(10);
 		cambiaFoco(tFIsbnP,"< Introduzca el ISBN del libro >");
 		
 		tFNumSP = new JTextField();
+		tFNumSP.setFocusTraversalKeysEnabled(false);
 		tFNumSP.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNumSP.setText("< Introduzca el Numero de socio >");
 		tFNumSP.setColumns(10);
 		cambiaFoco(tFNumSP,"< Introduzca el Numero de socio >");
 		
 		tFFechaAlta = new JTextField();
+		tFFechaAlta.setFocusTraversalKeysEnabled(false);
 		tFFechaAlta.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFFechaAlta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tFFechaAlta.setText(asignaFecha (0));
@@ -222,21 +227,25 @@ public class BibliotecaView {
 		tFFechaAlta.setColumns(10);
 		
 		tFFechaDevolucion = new JTextField();
+		tFFechaDevolucion.setFocusTraversalKeysEnabled(false);
 		tFFechaDevolucion.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFFechaDevolucion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		tFFechaDevolucion.setEditable(false);
 		tFFechaDevolucion.setColumns(10);
 		
 		JButton btnAltaP = new JButton("ALTA");
+		btnAltaP.setFocusTraversalKeysEnabled(false);
 		btnAltaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBajaP = new JButton("BAJA");
+		btnBajaP.setFocusTraversalKeysEnabled(false);
 		btnBajaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBuscarP = new JButton("BUSCAR");
+		btnBuscarP.setFocusTraversalKeysEnabled(false);
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//controller.BuscarPrestamo(BuscaConsulta(prestamo); //posible generalizacion de busqueda
+				//controller.BuscarPrestamo(BuscarConsulta(prestamo); //posible generalizacion de busqueda
 				controller.BuscarPrestamo(tFNumSP.getText());
 			}
 		});
@@ -261,6 +270,7 @@ public class BibliotecaView {
 		lblComAltaP.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		tFAvisosP = new JTextField();
+		tFAvisosP.setFocusTraversalKeysEnabled(false);
 		tFAvisosP.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFAvisosP.setForeground(Color.RED);
 		tFAvisosP.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -426,6 +436,7 @@ public class BibliotecaView {
 		);
 		
 		tablaPrestamo = new JTable();
+		tablaPrestamo.setFocusTraversalKeysEnabled(false);
 		tablaPrestamo.setCellSelectionEnabled(true);
 		tablaPrestamo.setModel(modeloPrestamo);
 				
@@ -446,11 +457,13 @@ public class BibliotecaView {
 		);
 		
 		JPanel socios = new JPanel();
+		socios.setFocusTraversalKeysEnabled(false);
 		socios.setBorder(BorderFactory.createRaisedBevelBorder());
 		tabbedPane.addTab("            SOCIOS            ", null, socios, null);
 		socios.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		tFNumS = new JTextField();
+		tFNumS.setFocusTraversalKeysEnabled(false);
 		tFNumS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNumS.setText("< Introduzca el Numero de socio  >");
 		tFNumS.setColumns(10);
@@ -471,12 +484,14 @@ public class BibliotecaView {
 		});
 		**/
 		tFNombreS = new JTextField();
+		tFNombreS.setFocusTraversalKeysEnabled(false);
 		tFNombreS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFNombreS.setText("< Introduzca el Nombre completo >");
 		tFNombreS.setColumns(10); 	
 		cambiaFoco(tFNombreS,"< Introduzca el Nombre completo >");
 				
 		tFFechaNacimiento = new JTextField();
+		tFFechaNacimiento.setFocusTraversalKeysEnabled(false);
 		tFFechaNacimiento.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFFechaNacimiento.setText("< F. de nacimiento >");
 		tFFechaNacimiento.setColumns(10);
@@ -512,9 +527,9 @@ public class BibliotecaView {
         
                 try {
                 	LocalDate.parse(tFFechaNacimiento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                	tfAvisosS.setText("Fecha válida --> " + tFFechaNacimiento.getText());
+                	tFAvisosS.setText("Fecha válida --> " + tFFechaNacimiento.getText());
                 } catch (DateTimeParseException e) {
-                    tfAvisosS.setText("Fecha no válida. Formato fecha : dd/mm/aaaa");
+                    tFAvisosS.setText("Fecha no válida. Formato fecha : dd/mm/aaaa");
                 }
             }
             
@@ -522,6 +537,7 @@ public class BibliotecaView {
         
 		
 		JButton btnAltaS = new JButton("ALTA");
+		btnAltaS.setFocusTraversalKeysEnabled(false);
 		btnAltaS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -529,9 +545,11 @@ public class BibliotecaView {
 		btnAltaS.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBajaS = new JButton("BAJA");
+		btnBajaS.setFocusTraversalKeysEnabled(false);
 		btnBajaS.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBuscarS = new JButton("BUSCAR");
+		btnBuscarS.setFocusTraversalKeysEnabled(false);
 		btnBuscarS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -539,6 +557,7 @@ public class BibliotecaView {
 		btnBuscarS.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnModS = new JButton("MODIFICAR");
+		btnModS.setFocusTraversalKeysEnabled(false);
 		btnModS.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblBuscarS = new JLabel("BUSQUEDA");
@@ -559,19 +578,21 @@ public class BibliotecaView {
 		JLabel lblComAltaS = new JLabel("Rellene todos los campos y pulse ALTA");
 		lblComAltaS.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
-		tfAvisosS = new JTextField();
-		tfAvisosS.setBorder(BorderFactory.createLoweredBevelBorder());
-		tfAvisosS.setForeground(Color.RED);
-		tfAvisosS.setFont(new Font("Tahoma", Font.BOLD, 14));
-		tfAvisosS.setEditable(false);
-		tfAvisosS.setDisabledTextColor(Color.RED);
-		tfAvisosS.setColumns(10);
-		tfAvisosS.setCaretColor(Color.RED);
+		tFAvisosS = new JTextField();
+		tFAvisosS.setFocusTraversalKeysEnabled(false);
+		tFAvisosS.setBorder(BorderFactory.createLoweredBevelBorder());
+		tFAvisosS.setForeground(Color.RED);
+		tFAvisosS.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tFAvisosS.setEditable(false);
+		tFAvisosS.setDisabledTextColor(Color.RED);
+		tFAvisosS.setColumns(10);
+		tFAvisosS.setCaretColor(Color.RED);
 		
 		JLabel lblSocios = new JLabel("SOCIOS");
 		lblSocios.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JScrollPane scrollSocios = new JScrollPane();
+		scrollSocios.setFocusTraversalKeysEnabled(false);
 		scrollSocios.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		cBoxTrabajador = new JCheckBox("Trabajador");
@@ -580,16 +601,17 @@ public class BibliotecaView {
 				int trabajador = 0;
 				if (cBoxTrabajador.isSelected()) {
 					trabajador = 1;
-					tfAvisosS.setText("1"); //prueba de funcionamiento 
+					tFAvisosS.setText("1"); //prueba de funcionamiento 
 				}
 				else {
 					trabajador = 0;
-					tfAvisosS.setText("0"); // prueba de funcionamiento
+					tFAvisosS.setText("0"); // prueba de funcionamiento
 				}
 			}
 		});
 		
 		tAMAS = new JTextArea();
+		tAMAS.setFocusTraversalKeysEnabled(false);
 		tAMAS.setBorder(BorderFactory.createLoweredBevelBorder());
 		tAMAS.setLineWrap(true);
 		tAMAS.setPreferredSize(new Dimension(288, 100));
@@ -646,7 +668,7 @@ public class BibliotecaView {
 								.addGroup(gl_socios.createSequentialGroup()
 									.addGap(0)
 									.addGroup(gl_socios.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(tfAvisosS)
+										.addComponent(tFAvisosS)
 										.addGroup(gl_socios.createSequentialGroup()
 											.addComponent(btnAltaS, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addGap(5)
@@ -683,7 +705,7 @@ public class BibliotecaView {
 					.addGroup(gl_socios.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_socios.createSequentialGroup()
 							.addGap(63)
-							.addComponent(tfAvisosS, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(tFAvisosS, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(gl_socios.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnModS, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
@@ -741,6 +763,7 @@ public class BibliotecaView {
 		
 		
 		JPanel inventario = new JPanel();
+		inventario.setFocusTraversalKeysEnabled(false);
 		inventario.setBorder(BorderFactory.createRaisedBevelBorder());
 		tabbedPane.addTab("           INVENTARIO          ", null, inventario, null);
 		inventario.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -749,12 +772,14 @@ public class BibliotecaView {
 		lblInventario.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		tFEdicion = new JTextField();
+		tFEdicion.setFocusTraversalKeysEnabled(false);
 		tFEdicion.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFEdicion.setText("< Introduzca la Edicion >");
 		tFEdicion.setColumns(10);
 		cambiaFoco(tFEdicion,"< Introduzca la Edicion >");
 		
 		tFIsbn = new JTextField();
+		tFIsbn.setFocusTraversalKeysEnabled(false);
 		tFIsbn.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFIsbn.setText("< Introduzca el ISBN del libro >");
 		tFIsbn.setColumns(10);
@@ -767,6 +792,7 @@ public class BibliotecaView {
 		cambiaFoco(tFTitulo,"< Introduzca el Titulo >");
 		
 		tFAutor = new JTextField();
+		tFAutor.setFocusTraversalKeysEnabled(false);
 		tFAutor.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFAutor.setText("< Introduzca el Autor >");
 		tFAutor.setColumns(10);
@@ -787,6 +813,7 @@ public class BibliotecaView {
 		lblComBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		tFAvisosI = new JTextField();
+		tFAvisosI.setFocusTraversalKeysEnabled(false);
 		tFAvisosI.setBorder(BorderFactory.createLoweredBevelBorder());
 		tFAvisosI.setForeground(Color.RED);
 		tFAvisosI.setCaretColor(Color.RED);
@@ -796,9 +823,11 @@ public class BibliotecaView {
 		tFAvisosI.setColumns(10);
 		
 		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
+		btnBaja_2_3_1.setFocusTraversalKeysEnabled(false);
 		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBuscarI = new JButton("BAJA");
+		btnBuscarI.setFocusTraversalKeysEnabled(false);
 		btnBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		grupoBoton_2 = new ButtonGroup();
@@ -812,6 +841,7 @@ public class BibliotecaView {
 		grupoBoton_2.add(rdbtnAdulto);
 		
 		JScrollPane scrollInventario = new JScrollPane();
+		scrollInventario.setFocusTraversalKeysEnabled(false);
 		scrollInventario.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		JLabel lblBajaI = new JLabel("BAJA");
@@ -821,9 +851,11 @@ public class BibliotecaView {
 		lblComBajaI.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
 		JButton btnModI = new JButton("MODIFICAR");
+		btnModI.setFocusTraversalKeysEnabled(false);
 		btnModI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnAltaI = new JButton("ALTA");
+		btnAltaI.setFocusTraversalKeysEnabled(false);
 		btnAltaI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JLabel lblModI = new JLabel("MODIFICAR");

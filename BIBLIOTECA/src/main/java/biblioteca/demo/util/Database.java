@@ -12,16 +12,16 @@ import org.apache.commons.dbutils.DbUtils;
  */
 public class Database extends DbUtil {
 	//Localizacion de ficheros de configuracion y carga de bases de datos CASA
-	
+	/**
 	private static final String APP_PROPERTIES = "C:\\Users\\jealm\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\application.properties";
 	private static final String SQL_SCHEMA = "C:\\Users\\jealm\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\schema.sql";
 	private static final String SQL_LOAD = "C:\\Users\\jealm\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\data.sql";
-	/**
+	**/
 	//Localizacion de ficheros de configuracion y carga de bases de datos
 	private static final String APP_PROPERTIES = "C:\\Users\\mañana\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\application.properties";
 	private static final String SQL_SCHEMA = "C:\\Users\\mañana\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\schema.sql";
 	private static final String SQL_LOAD = "C:\\Users\\mañana\\git\\BIBLIOTECA\\BIBLIOTECA\\src\\main\\resources\\data.sql";
-	**/
+	//**/
 	//parametros de la base de datos leidos de application.properties (base de datos local sin usuario/password)
 	private String driver;
 	private String url;

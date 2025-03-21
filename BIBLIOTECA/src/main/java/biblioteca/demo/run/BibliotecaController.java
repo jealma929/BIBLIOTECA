@@ -2,6 +2,7 @@ package biblioteca.demo.run;
 
 import java.util.List;
 
+
 public class BibliotecaController {
 	
 	private BibliotecaModel model;
@@ -16,13 +17,17 @@ public class BibliotecaController {
 		this.view.getFrame().setVisible(true);
 	}
 	
-	public void BuscaPrestamo(String s) {
+
+	public void BuscarPrestamo(String text) {
+		// TODO Auto-generated method stub
 		int i;
-		List<Object[]> lista=model.BuscaPrestamo(s);
+		List<Object[]> lista=model.BuscarPrestamo(text);
 		
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaPrestamo(lista.get(i));
 		}
+		
+		
 	}
-
+	
 }
