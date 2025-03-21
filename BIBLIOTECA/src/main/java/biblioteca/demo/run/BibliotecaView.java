@@ -552,6 +552,7 @@ public class BibliotecaView {
 		btnBuscarS.setFocusTraversalKeysEnabled(false);
 		btnBuscarS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.BuscarSocio(tFNombreS.getText());
 			}
 		});
 		btnBuscarS.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -596,19 +597,19 @@ public class BibliotecaView {
 		scrollSocios.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		cBoxTrabajador = new JCheckBox("Trabajador");
+		/**String trabajador;
 		cBoxTrabajador.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				int trabajador = 0;
 				if (cBoxTrabajador.isSelected()) {
-					trabajador = 1;
+					trabajador = "Trabajador";
 					tFAvisosS.setText("1"); //prueba de funcionamiento 
 				}
 				else {
-					trabajador = 0;
+					trabajador = "";
 					tFAvisosS.setText("0"); // prueba de funcionamiento
 				}
 			}
-		});
+		});**/
 		
 		tAMAS = new JTextArea();
 		tAMAS.setFocusTraversalKeysEnabled(false);
@@ -991,6 +992,13 @@ public class BibliotecaView {
 		// TODO Auto-generated method stub
 		this.modeloPrestamo.addRow(rowPrestamo);
 		this.tablaInventario.setModel(modeloPrestamo);
+		
+	}
+
+	public void rellenatablaSocio(Object[] rowSocio) {
+		// TODO Auto-generated method stub
+		this.modeloSocios.addRow(rowSocio);
+		this.tablaSocios.setModel(modeloSocios);
 		
 	}
 }

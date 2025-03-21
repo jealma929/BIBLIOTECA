@@ -21,4 +21,18 @@ public class BibliotecaModel {
 		return lista;
 	}
 
+	public List<Object[]> BuscaSocio(String text) {
+		// TODO Auto-generated method stub
+		List<Object[]> lista = null;
+		String sql;
+			if (s.equals("*")) {
+				sql= "SELECT * FROM SOCIO";
+				lista =db.executeQueryArray(sql);
+			} else {
+				sql = "SELECT * FROM SOCIO WHERE NUMSOCIO =?";
+				lista =db.executeQueryArray(sql, s);
+			}
+		return lista;
+	}
+
 }
