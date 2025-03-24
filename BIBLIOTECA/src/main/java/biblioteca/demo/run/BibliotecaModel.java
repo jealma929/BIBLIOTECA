@@ -35,4 +35,18 @@ public class BibliotecaModel {
 		return lista;
 	}
 
+	public List<Object[]> BuscaInventario(String text) {
+		// TODO Auto-generated method stub
+		List<Object[]> lista = null;
+		String sql;
+			if (text.equals("*")) {
+				sql= "SELECT * FROM LIBRO";
+				lista =db.executeQueryArray(sql);
+			} else {
+				sql = "SELECT * FROM LIBRO WHERE TITULO =?";
+				lista =db.executeQueryArray(sql, text);
+			}
+		return lista;
+	}
+
 }

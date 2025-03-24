@@ -42,4 +42,14 @@ public class BibliotecaController {
 		
 	}
 	
+	public void BuscarInventario(String text) {
+		// TODO Auto-generated method stub
+		int i;
+		List<Object[]> lista=model.BuscaInventario(text);
+		
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaInventario(lista.get(i));
+		}
+		
+	}
 }

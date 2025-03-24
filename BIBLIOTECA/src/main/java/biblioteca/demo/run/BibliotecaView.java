@@ -36,6 +36,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.Font;
@@ -309,6 +310,8 @@ public class BibliotecaView {
 		lblPrestamo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JScrollPane scrollPrestamo = new JScrollPane();
+		//scrollPrestamo.setVerticalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		
 		scrollPrestamo.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		
@@ -593,6 +596,7 @@ public class BibliotecaView {
 		lblSocios.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JScrollPane scrollSocios = new JScrollPane();
+		//scrollSocios.setVerticalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollSocios.setFocusTraversalKeysEnabled(false);
 		scrollSocios.setBorder(BorderFactory.createLoweredBevelBorder());
 		
@@ -823,13 +827,18 @@ public class BibliotecaView {
 		tFAvisosI.setEditable(false);
 		tFAvisosI.setColumns(10);
 		
-		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
-		btnBaja_2_3_1.setFocusTraversalKeysEnabled(false);
-		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnBuscarI = new JButton("BAJA");
+		JButton btnBuscarI = new JButton("BUSCAR");
+		btnBuscarI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controller.BuscarInventario(tFTitulo.getText());
+			}
+		});
 		btnBuscarI.setFocusTraversalKeysEnabled(false);
 		btnBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBajaI = new JButton("BAJA");
+		btnBajaI.setFocusTraversalKeysEnabled(false);
+		btnBajaI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		grupoBoton_2 = new ButtonGroup();
 		
@@ -842,6 +851,7 @@ public class BibliotecaView {
 		grupoBoton_2.add(rdbtnAdulto);
 		
 		JScrollPane scrollInventario = new JScrollPane();
+		//scrollInventario.setVerticalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollInventario.setFocusTraversalKeysEnabled(false);
 		scrollInventario.setBorder(BorderFactory.createLoweredBevelBorder());
 		
@@ -898,9 +908,9 @@ public class BibliotecaView {
 										.addGroup(gl_inventario.createSequentialGroup()
 											.addComponent(btnAltaI, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addGap(5)
-											.addComponent(btnBuscarI, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnBajaI, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 											.addGap(5)
-											.addComponent(btnBaja_2_3_1, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+											.addComponent(btnBuscarI, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
 											.addGap(5)
 											.addComponent(btnModI, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
 										.addGroup(gl_inventario.createSequentialGroup()
@@ -963,8 +973,8 @@ public class BibliotecaView {
 							.addGap(18)
 							.addGroup(gl_inventario.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnModI, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnBaja_2_3_1)
 								.addComponent(btnBuscarI)
+								.addComponent(btnBajaI)
 								.addComponent(btnAltaI, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
 					.addGap(18)
 					.addComponent(scrollInventario, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
@@ -980,7 +990,7 @@ public class BibliotecaView {
 		scrollInventario.setViewportView(tablaInventario);
 		inventario.setLayout(gl_inventario);
 		frmBiblioteca.getContentPane().setLayout(groupLayout);
-		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tFEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBaja_2_3_1, btnBuscarI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion}));
+		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tFEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBuscarI, btnBajaI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion}));
 	}
 
 	public JFrame getFrame() {
@@ -991,7 +1001,7 @@ public class BibliotecaView {
 	public void rellenatablaPrestamo(Object[] rowPrestamo) {
 		// TODO Auto-generated method stub
 		this.modeloPrestamo.addRow(rowPrestamo);
-		this.tablaInventario.setModel(modeloPrestamo);
+		this.tablaPrestamo.setModel(modeloPrestamo);
 		
 	}
 
@@ -999,6 +1009,13 @@ public class BibliotecaView {
 		// TODO Auto-generated method stub
 		this.modeloSocios.addRow(rowSocio);
 		this.tablaSocios.setModel(modeloSocios);
+		
+	}
+	
+	public void rellenatablaInventario(Object[] rowInventario) {
+		// TODO Auto-generated method stub
+		this.modeloInventario.addRow(rowInventario);
+		this.tablaInventario.setModel(modeloInventario);
 		
 	}
 }
