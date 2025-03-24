@@ -810,6 +810,7 @@ public class BibliotecaView {
 		JLabel lblBuscarI = new JLabel("BUSQUEDA");
 		lblBuscarI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		
 		JLabel lblComBuscarI = new JLabel("Rellene cualquier campo y pulse BUSCAR");
 		lblComBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
@@ -824,6 +825,13 @@ public class BibliotecaView {
 		tFAvisosI.setColumns(10);
 		
 		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
+		btnBaja_2_3_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.BuscarInventario (tFTitulo.getText());
+				
+			}
+		});
 		btnBaja_2_3_1.setFocusTraversalKeysEnabled(false);
 		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -991,7 +999,7 @@ public class BibliotecaView {
 	public void rellenatablaPrestamo(Object[] rowPrestamo) {
 		// TODO Auto-generated method stub
 		this.modeloPrestamo.addRow(rowPrestamo);
-		this.tablaInventario.setModel(modeloPrestamo);
+		this.tablaPrestamo.setModel(modeloPrestamo);
 		
 	}
 
@@ -999,6 +1007,13 @@ public class BibliotecaView {
 		// TODO Auto-generated method stub
 		this.modeloSocios.addRow(rowSocio);
 		this.tablaSocios.setModel(modeloSocios);
+		
+	}
+
+	public void rellenatablaInventario(Object[] rowDato) {
+		// TODO Auto-generated method stub
+		this.modeloInventario.addRow(rowDato);
+		this.tablaInventario.setModel(modeloInventario);
 		
 	}
 }
