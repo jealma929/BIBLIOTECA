@@ -814,6 +814,7 @@ public class BibliotecaView {
 		JLabel lblBuscarI = new JLabel("BUSQUEDA");
 		lblBuscarI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		
 		JLabel lblComBuscarI = new JLabel("Rellene cualquier campo y pulse BUSCAR");
 		lblComBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		
@@ -827,12 +828,27 @@ public class BibliotecaView {
 		tFAvisosI.setEditable(false);
 		tFAvisosI.setColumns(10);
 		
+<<<<<<< HEAD
 		JButton btnBuscarI = new JButton("BUSCAR");
 		btnBuscarI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.BuscarInventario(tFTitulo.getText());
 			}
 		});
+=======
+		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
+		btnBaja_2_3_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				controlador.BuscarInventario (tFTitulo.getText());
+				
+			}
+		});
+		btnBaja_2_3_1.setFocusTraversalKeysEnabled(false);
+		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnBuscarI = new JButton("BAJA");
+>>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
 		btnBuscarI.setFocusTraversalKeysEnabled(false);
 		btnBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -1011,10 +1027,17 @@ public class BibliotecaView {
 		this.tablaSocios.setModel(modeloSocios);
 		
 	}
+<<<<<<< HEAD
 	
 	public void rellenatablaInventario(Object[] rowInventario) {
 		// TODO Auto-generated method stub
 		this.modeloInventario.addRow(rowInventario);
+=======
+
+	public void rellenatablaInventario(Object[] rowDato) {
+		// TODO Auto-generated method stub
+		this.modeloInventario.addRow(rowDato);
+>>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
 		this.tablaInventario.setModel(modeloInventario);
 		
 	}

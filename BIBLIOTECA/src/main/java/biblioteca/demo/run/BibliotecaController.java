@@ -34,7 +34,7 @@ public class BibliotecaController {
 	public void BuscarSocio(String text) {
 		// TODO Auto-generated method stub
 		int i;
-		List<Object[]> lista=model.BuscaSocio(text);
+		List<Object[]> lista=model.BuscarSocio(text);
 		
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaSocio(lista.get(i));
@@ -45,6 +45,7 @@ public class BibliotecaController {
 	public void BuscarInventario(String text) {
 		// TODO Auto-generated method stub
 		int i;
+<<<<<<< HEAD
 		List<Object[]> lista=model.BuscaInventario(text);
 		
 		for (i=0; i<lista.size(); i++) {
@@ -52,4 +53,32 @@ public class BibliotecaController {
 		}
 		
 	}
+=======
+		List<Object[]> lista=model.BuscarInventario(text);
+		
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaInventario(lista.get(i));
+		}
+		
+	}
+
+/************************************************
+	
+	public void Buscar(String text, String frame, String campo) {
+		// TODO Auto-generated method stub
+		int i;
+		//text=frame+"**"+campo+"**"+text;
+		
+		List<Object[]> lista=model.Buscar(text);
+		
+		
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaInventario(lista.get(i));
+		}
+		
+	}
+	**/
+	
+	
+>>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
 }
