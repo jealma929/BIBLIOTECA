@@ -36,8 +36,8 @@ public class BibliotecaController {
 		int i;
 		List<Object[]> lista=model.BuscaSocio(text);
 		
-		for (i=0, i<lista.size(); i++) {
-			view.rellenatablaSocio(lista.get(i))
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaSocio(lista.get(i));
 		}
 		
 	}

@@ -69,7 +69,7 @@ public class SwingMain {
 				controller.setVistaModel(new BibliotecaView(controller), new BibliotecaModel());
 			}
 		});
-		
+	
 		JButton btnNewButton_1 = new JButton("PRESTAMOS");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

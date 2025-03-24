@@ -25,12 +25,12 @@ public class BibliotecaModel {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
 		String sql;
-			if (s.equals("*")) {
+			if (text.equals("*")) {
 				sql= "SELECT * FROM SOCIO";
 				lista =db.executeQueryArray(sql);
 			} else {
 				sql = "SELECT * FROM SOCIO WHERE NUMSOCIO =?";
-				lista =db.executeQueryArray(sql, s);
+				lista =db.executeQueryArray(sql, text);
 			}
 		return lista;
 	}
