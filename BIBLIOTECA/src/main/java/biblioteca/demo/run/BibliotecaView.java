@@ -94,6 +94,7 @@ public class BibliotecaView {
 	private JCheckBox cBoxTrabajador;
 	private JPanel prestamo;
 	
+
 	//*********** Devuelve la fecha con incremento
 	public static String asignaFecha (int i) {
 		LocalDate lD = LocalDate.now();
@@ -102,30 +103,7 @@ public class BibliotecaView {
 		String fecha = lD.format(dTF);
 		return fecha;
 	}
-	
-	//*********** Devuelve el formato inicial a los JTextFiel
-	/**
-	private void  cambiaFoco(JTextField nombre) {
-		String comentario = nombre.getText();
-		nombre.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-					nombre.setText("");
-				
-			}
-			@Override
-			public void focusLost(FocusEvent e) {
-			String text =nombre.getText();
-			if (text.isEmpty()) {
-				nombre.setText(comentario);
-			}
-		}
-	}); 
-	}
-	**/
-	
-	
+
 	
 	//***********Devuelve el formato inicial de los JTextArea
 	public void  cambiaFoco2(JTextArea nombre, String comentario) {
@@ -273,7 +251,7 @@ public class BibliotecaView {
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrarTabla(modeloPrestamo);
-				cargar busqueda()
+				//cargarbusqueda();
 				controller.BuscarPrestamo(tFNumSP.getText());
 			}
 		});
@@ -1030,6 +1008,11 @@ public class BibliotecaView {
 		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tFEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBuscarI, btnBajaI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion, cBoxEscedidos}));
 	}
 
+	protected void cargarbusqueda() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public JFrame getFrame() {
 		// TODO Auto-generated method stub
 		return this.frmBiblioteca;
@@ -1039,6 +1022,7 @@ public class BibliotecaView {
 		// TODO Auto-generated method stub
 		
 		this.modeloPrestamo.addRow(rowPrestamo);
+		
 		this.tablaPrestamo.setModel(modeloPrestamo);
 		
 	}

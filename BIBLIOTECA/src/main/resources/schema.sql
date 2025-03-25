@@ -16,8 +16,8 @@ CREATE TABLE "libro" (
 );
 
 CREATE TABLE "prestamo" (
-	"socio"	INTEGER NOT NULL,
 	"libro"	INTEGER NOT NULL,
+	"socio"	INTEGER NOT NULL,
 	"fechaPrestamo"	TEXT NOT NULL,
 	"fechaDevolucion"	TEXT NOT NULL,
 	PRIMARY KEY("socio","libro"),
