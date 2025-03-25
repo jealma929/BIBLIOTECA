@@ -10,11 +10,11 @@ public class BibliotecaModel {
 	
 	
 	
-	public List<Object[]> BuscarPrestamo(String s) {
+	public List<Object[]> BuscarPrestamo(int s) {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
 		String sql;
-			if (s.equals("*")) {
+			if (s==0) {
 				sql= "SELECT * FROM PRESTAMO";
 				lista =db.executeQueryArray(sql);
 			} else {
@@ -29,16 +29,16 @@ public class BibliotecaModel {
 		List<Object[]> lista = null;
 		String sql;
 			if (s.equals("*")) {
-				sql= "SELECT * FROM LIBRO";
+				sql= "SELECT * FROM SOCIO";
 				lista =db.executeQueryArray(sql);
 			} else {
-				sql = "SELECT * FROM SOCIO WHERE TITULO =?";
+				sql = "SELECT * FROM SOCIO WHERE NOMBRECOMPLETO =?";
 				lista =db.executeQueryArray(sql, s);
 			}	
 		return lista;
 	}
 
-<<<<<<< HEAD
+
 	public List<Object[]> BuscaInventario(String text) {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
@@ -53,22 +53,8 @@ public class BibliotecaModel {
 		return lista;
 	}
 
-=======
-	public List<Object[]> BuscarInventario(String text) {
-		// TODO Auto-generated method stub
-		List<Object[]> lista = null;
-		String sql;
-		if (text.equals("*")) {
-			sql= "SELECT * FROM LIBRO";
-			lista =db.executeQueryArray(sql);
-		} else {
-			sql = "SELECT * FROM LIBRO WHERE TITULO =?";
-			lista =db.executeQueryArray(sql, text);
-		}	
-	return lista;
-	}
 
-//**************************************************************************************
+/** ************************************************************************************
 	public List<Object[]> Buscar(String fText) {
 		// TODO Auto-generated method stub
 		
@@ -90,5 +76,5 @@ public class BibliotecaModel {
 		}	
 	return lista;
 	}
->>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
+**/
 }

@@ -18,8 +18,8 @@ CREATE TABLE "libro" (
 CREATE TABLE "prestamo" (
 	"socio"	INTEGER NOT NULL,
 	"libro"	INTEGER NOT NULL,
-	"fechaPrestamo"	INTEGER NOT NULL,
-	"fechaDevolucion"	INTEGER NOT NULL,
+	"fechaPrestamo"	TEXT NOT NULL,
+	"fechaDevolucion"	TEXT NOT NULL,
 	PRIMARY KEY("socio","libro"),
 	FOREIGN KEY("libro") REFERENCES "libro"("isbn")
 );

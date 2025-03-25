@@ -58,6 +58,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class BibliotecaView {
 	
@@ -123,6 +125,8 @@ public class BibliotecaView {
 	}
 	**/
 	
+	
+	
 	//***********Devuelve el formato inicial de los JTextArea
 	public void  cambiaFoco2(JTextArea nombre, String comentario) {
 		
@@ -167,7 +171,20 @@ public class BibliotecaView {
 	}
 	
 	
-		
+	//*********** Reinicia la tabla antes de una nueva busqueda************************************
+
+	
+	public void borrarTabla(DefaultTableModel modelo) {
+		int i;
+	
+		for (i=modelo.getRowCount()-1;i>=0;i--) {
+			modelo.removeRow(i);
+			
+		}
+			
+	}
+
+	
 	public BibliotecaView(BibliotecaController controlador) {		// inicializamos la biblioteca
 		initialize (controlador);
 	}
@@ -197,6 +214,10 @@ public class BibliotecaView {
 			);
 		
 		prestamo = new JPanel();
+		prestamo.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			}
+		});
 		prestamo.setFocusTraversalKeysEnabled(false);
 		prestamo.setBorder(BorderFactory.createRaisedBevelBorder());
 		tabbedPane.addTab("            PRESTAMO         ", null, prestamo, null);
@@ -239,6 +260,11 @@ public class BibliotecaView {
 		btnAltaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnBajaP = new JButton("BAJA");
+		btnBajaP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnBajaP.setFocusTraversalKeysEnabled(false);
 		btnBajaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -246,7 +272,8 @@ public class BibliotecaView {
 		btnBuscarP.setFocusTraversalKeysEnabled(false);
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//controller.BuscarPrestamo(BuscarConsulta(prestamo); //posible generalizacion de busqueda
+				borrarTabla(modeloPrestamo);
+				cargar busqueda()
 				controller.BuscarPrestamo(tFNumSP.getText());
 			}
 		});
@@ -320,6 +347,11 @@ public class BibliotecaView {
 		JLabel lblFechaAlta = new JLabel("Fecha de Alta");
 		
 		JLabel lblFechaDevolucion = new JLabel("Fecha de Devolución");
+		
+		JCheckBox cBoxEscedidos = new JCheckBox("ESCEDIDOS");
+	
+		cBoxEscedidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
 		GroupLayout gl_prestamo = new GroupLayout(prestamo);
 		gl_prestamo.setHorizontalGroup(
 			gl_prestamo.createParallelGroup(Alignment.LEADING)
@@ -375,13 +407,14 @@ public class BibliotecaView {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_prestamo.createParallelGroup(Alignment.TRAILING)
 								.addComponent(tFAvisosP, GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-								.addGroup(gl_prestamo.createSequentialGroup()
+								.addGroup(Alignment.LEADING, gl_prestamo.createSequentialGroup()
 									.addComponent(btnAltaP, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 									.addGap(5)
 									.addComponent(btnBajaP, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 									.addGap(5)
 									.addComponent(btnBuscarP, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 119, Short.MAX_VALUE)))))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(cBoxEscedidos, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)))))
 					.addGap(25))
 		);
 		gl_prestamo.setVerticalGroup(
@@ -413,7 +446,8 @@ public class BibliotecaView {
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
 										.addComponent(btnAltaP, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnBuscarP)
-										.addComponent(btnBajaP)))
+										.addComponent(btnBajaP)
+										.addComponent(cBoxEscedidos)))
 								.addGroup(gl_prestamo.createSequentialGroup()
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_prestamo.createSequentialGroup()
@@ -430,8 +464,8 @@ public class BibliotecaView {
 									.addGroup(gl_prestamo.createParallelGroup(Alignment.BASELINE)
 										.addComponent(lblFechaAlta)
 										.addComponent(lblFechaDevolucion))))
-							.addGap(18)
-							.addComponent(scrollPrestamo, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+							.addGap(17)
+							.addComponent(scrollPrestamo, GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
 						.addGroup(gl_prestamo.createSequentialGroup()
 							.addGap(136)
 							.addComponent(rdbtn15)))
@@ -555,6 +589,7 @@ public class BibliotecaView {
 		btnBuscarS.setFocusTraversalKeysEnabled(false);
 		btnBuscarS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				borrarTabla(modeloSocios);
 				controller.BuscarSocio(tFNombreS.getText());
 			}
 		});
@@ -828,27 +863,13 @@ public class BibliotecaView {
 		tFAvisosI.setEditable(false);
 		tFAvisosI.setColumns(10);
 		
-<<<<<<< HEAD
 		JButton btnBuscarI = new JButton("BUSCAR");
 		btnBuscarI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				borrarTabla(modeloInventario);
 				controller.BuscarInventario(tFTitulo.getText());
 			}
 		});
-=======
-		JButton btnBaja_2_3_1 = new JButton("BUSCAR");
-		btnBaja_2_3_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				controlador.BuscarInventario (tFTitulo.getText());
-				
-			}
-		});
-		btnBaja_2_3_1.setFocusTraversalKeysEnabled(false);
-		btnBaja_2_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		JButton btnBuscarI = new JButton("BAJA");
->>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
 		btnBuscarI.setFocusTraversalKeysEnabled(false);
 		btnBuscarI.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -1006,7 +1027,7 @@ public class BibliotecaView {
 		scrollInventario.setViewportView(tablaInventario);
 		inventario.setLayout(gl_inventario);
 		frmBiblioteca.getContentPane().setLayout(groupLayout);
-		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tFEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBuscarI, btnBajaI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion}));
+		frmBiblioteca.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{tabbedPane, inventario, lblInventario, tFEdicion, tFIsbn, tFTitulo, tFAutor, lblAltaI, lblComAltaI, lblNewLabel_5_4_2_1, lblBuscarI, lblComBuscarI, tFAvisosI, btnBuscarI, btnBajaI, rdbtnInfantil, rdbtnAdulto, scrollInventario, lblBajaI, lblComBajaI, btnModI, btnAltaI, tablaInventario, prestamo, tFIsbnP, tFNumSP, tFFechaAlta, btnAltaP, btnBajaP, btnBuscarP, lblBuscarP, lblComBuscarP, lblBajaP, lblComBajaP, lblAltaP, lblComAltaP, tFAvisosP, rdbtn15, rdbtn30, lblPrestamo, scrollPrestamo, lblModI, lblComModI, tFFechaDevolucion, lblDuracion, tablaPrestamo, lblFechaAlta, lblFechaDevolucion, cBoxEscedidos}));
 	}
 
 	public JFrame getFrame() {
@@ -1016,6 +1037,7 @@ public class BibliotecaView {
 
 	public void rellenatablaPrestamo(Object[] rowPrestamo) {
 		// TODO Auto-generated method stub
+		
 		this.modeloPrestamo.addRow(rowPrestamo);
 		this.tablaPrestamo.setModel(modeloPrestamo);
 		
@@ -1023,22 +1045,16 @@ public class BibliotecaView {
 
 	public void rellenatablaSocio(Object[] rowSocio) {
 		// TODO Auto-generated method stub
+		
 		this.modeloSocios.addRow(rowSocio);
 		this.tablaSocios.setModel(modeloSocios);
 		
 	}
-<<<<<<< HEAD
 	
 	public void rellenatablaInventario(Object[] rowInventario) {
 		// TODO Auto-generated method stub
 		this.modeloInventario.addRow(rowInventario);
-=======
-
-	public void rellenatablaInventario(Object[] rowDato) {
-		// TODO Auto-generated method stub
-		this.modeloInventario.addRow(rowDato);
->>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
 		this.tablaInventario.setModel(modeloInventario);
-		
+	
 	}
 }
