@@ -48,9 +48,22 @@ public class BibliotecaModel {
 				lista =db.executeQueryArray(sql);
 			} else {
 				sql = "SELECT * FROM LIBRO WHERE TITULO =?";
-				lista =db.executeQueryArray(sql, text);
+				lista =db.executeQueryArray(sql, text);			//executeQuery se utiliza cuando la base de datos ha de responder
 			}
 		return lista;
+	}
+
+	public void guardarDatos(List<Object> datos) {
+		// TODO Auto-generated method stub
+		
+		
+		String sql = "INSERT INTO prestamo(libro,socio,fechaPrestamo,fechaDevolucion) VALUES (?,?,?,?)";
+		
+		db.executeUpdate(sql, Integer.parseInt(datos.get(0).toString()),		//executeUpdate se utiliza cuando la base de datos NO ha de responder
+				Integer.parseInt(datos.get(1).toString()), datos.get(2).toString(),
+				datos.get(3).toString());
+		
+		
 	}
 
 

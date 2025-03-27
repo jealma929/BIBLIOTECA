@@ -4,6 +4,8 @@ import java.time.*;
 import java.time.format.*;
 import javax.swing.JFrame;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -85,7 +87,7 @@ public class BibliotecaView {
 	private ButtonGroup grupoBoton_2;
 	protected int duracion;
 	private JTextArea tAMAS;
-	
+	private List<Object> datos;
 	private DefaultTableModel modeloPrestamo;
 	private DefaultTableModel modeloSocios;
 	private DefaultTableModel modeloInventario;
@@ -107,7 +109,7 @@ public class BibliotecaView {
 	
 	//***********Devuelve el formato inicial de los JTextArea
 	public void  cambiaFoco2(JTextArea nombre, String comentario) {
-		
+		/*
 		nombre.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -121,15 +123,14 @@ public class BibliotecaView {
 				String text =nombre.getText();
 				if (text.isEmpty()) {
 					nombre.setText(comentario);
-			}
 		}
-	}); 
+	}); */
 	}	
 
 	
 	//*********** Devuelve el formato inicial a los JTextFile
 	private void  cambiaFoco(JTextField nombre, String comentario) {
-		
+		/*
 		nombre.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -145,13 +146,11 @@ public class BibliotecaView {
 					nombre.setText(comentario);
 			}
 		}
-	}); 
+	}); */
 	}
 	
 	
-	//*********** Reinicia la tabla antes de una nueva busqueda************************************
-
-	
+	//*********** Reinicia la tabla antes de una nueva busqueda************************************	
 	public void borrarTabla(DefaultTableModel modelo) {
 		int i;
 	
@@ -161,6 +160,28 @@ public class BibliotecaView {
 		}
 			
 	}
+	
+	//*********** Gestiona los datos antes de pasarlos a controller ***********************
+	private void cargarDatos() {
+		// TODO Auto-generated method stub
+	
+		
+		//this.datos = new ArrayList<Object>();
+		
+		this.datos.add(tFIsbnP.getText());
+		this.datos.add(tFNumSP.getText());
+		String fechaAlta = tFFechaAlta.getText().replace("/", "");
+		this.datos.add(fechaAlta);
+		String fechaDevolucion = tFFechaDevolucion.getText().replace("/","");
+		this.datos.add(fechaDevolucion);
+		
+		int numero= Integer.parseInt(datos.get(0).toString());
+		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero);
+		
+		this.controller.guardaDatos(datos);
+		
+
+	}
 
 	
 	public BibliotecaView(BibliotecaController controlador) {		// inicializamos la biblioteca
@@ -168,6 +189,8 @@ public class BibliotecaView {
 	}
 	
 	private void initialize(BibliotecaController controlador) {
+		
+		this.datos = new ArrayList<Object>();
 		
 		frmBiblioteca = new JFrame();
 		frmBiblioteca.setResizable(false);
@@ -181,8 +204,9 @@ public class BibliotecaView {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFocusTraversalKeysEnabled(false);
 		tabbedPane.setBorder(BorderFactory.createLoweredBevelBorder());
+
 		
-		/** PRESTAMO comienza esta pestaña **/
+/************************************************   PRESTAMO comienza esta pestaña **/
 		
 		modeloPrestamo = new DefaultTableModel (new Object[][] {
 				},
@@ -207,16 +231,18 @@ public class BibliotecaView {
 		tFIsbnP = new JTextField();
 		tFIsbnP.setFocusTraversalKeysEnabled(false);
 		tFIsbnP.setBorder(BorderFactory.createLoweredBevelBorder());
-		tFIsbnP.setText("< Introduzca el ISBN del libro >");
+		tFIsbnP.setText("");
+		//tFIsbnP.setText("< Introduzca el ISBN del libro >");
 		tFIsbnP.setColumns(10);
-		cambiaFoco(tFIsbnP,"< Introduzca el ISBN del libro >");
+		//cambiaFoco(tFIsbnP,"< Introduzca el ISBN del libro >");
 		
 		tFNumSP = new JTextField();
 		tFNumSP.setFocusTraversalKeysEnabled(false);
 		tFNumSP.setBorder(BorderFactory.createLoweredBevelBorder());
-		tFNumSP.setText("< Introduzca el Numero de socio >");
+		tFNumSP.setText("");
+		//tFNumSP.setText("< Introduzca el Numero de socio >");
 		tFNumSP.setColumns(10);
-		cambiaFoco(tFNumSP,"< Introduzca el Numero de socio >");
+		//cambiaFoco(tFNumSP,"< Introduzca el Numero de socio >");
 		
 		tFFechaAlta = new JTextField();
 		tFFechaAlta.setFocusTraversalKeysEnabled(false);
@@ -234,6 +260,13 @@ public class BibliotecaView {
 		tFFechaDevolucion.setColumns(10);
 		
 		JButton btnAltaP = new JButton("ALTA");
+		btnAltaP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarDatos();
+			}
+		});
+	
+	
 		btnAltaP.setFocusTraversalKeysEnabled(false);
 		btnAltaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -251,11 +284,22 @@ public class BibliotecaView {
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrarTabla(modeloPrestamo);
-				//cargarbusqueda();
+				
 				controller.BuscarPrestamo(tFNumSP.getText());
 			}
 		});
 		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+		JCheckBox cBoxEscedidos = new JCheckBox("ESCEDIDOS");
+		cBoxEscedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cBoxEscedidos.isSelected()==true) {
+					
+				}
+			}
+		});
+		cBoxEscedidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
 		
 		JLabel lblBuscarP = new JLabel("BUSQUEDA");
 		lblBuscarP.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -326,9 +370,9 @@ public class BibliotecaView {
 		
 		JLabel lblFechaDevolucion = new JLabel("Fecha de Devolución");
 		
-		JCheckBox cBoxEscedidos = new JCheckBox("ESCEDIDOS");
+		
 	
-		cBoxEscedidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
 		
 		GroupLayout gl_prestamo = new GroupLayout(prestamo);
 		gl_prestamo.setHorizontalGroup(

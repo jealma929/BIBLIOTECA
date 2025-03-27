@@ -7,15 +7,15 @@ delete from prestamo;
 delete from socio;
 
 INSERT INTO libro(isbn,titulo,autor,edicion,categoria) VALUES 
-(9788437622149,"El Quijote","Miguel de Cervantes", 2007,1),
-(9788416434725,"Papá dice", "Margarita del Mazo",2017,0),
-(9788419507594,"Cuento de Navidad", "Charles Dickens",2003,0),
-(9788401034794,"El Albatros negro", "Maria Oruña",2025,1);
+(437622149,"El Quijote","Miguel de Cervantes", 2007,1),
+(416434725,"Papá dice", "Margarita del Mazo",2017,0),
+(419507594,"Cuento de Navidad", "Charles Dickens",2003,0),
+(401034794,"El Albatros negro", "Maria Oruña",2025,1);
 
 
 INSERT INTO prestamo(libro,socio,fechaPrestamo,fechaDevolucion) VALUES 
-(9788437622149,12000001,"03012025","18022025"),
-(9788416434725,99000001,"05032025","20032025");
+(437622149,12000001,"03012025","18022025"),
+(416434725,99000001,"05032025","20032025");
 
 
 INSERT INTO socio(numSocio,fechaNac,nombreCompleto,trabajador,masInfo) VALUES

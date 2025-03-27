@@ -55,6 +55,16 @@ public class BibliotecaController {
 	}
 
 
+	public void guardaDatos(List<Object> datos) {
+		// TODO Auto-generated method stub
+		model.guardarDatos(datos);
+	}
+
+
+
+	
+
+
 /************************************************
 	
 	public void Buscar(String text, String frame, String campo) {
