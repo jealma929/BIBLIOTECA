@@ -105,7 +105,13 @@ public class BibliotecaView {
 		String fecha = lD.format(dTF);
 		return fecha;
 	}
-
+	//*********** Devuelve la fecha a un formato LocalDate 
+	public static String fechaLD (String fecha) {
+		DateTimeFormatter dTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter dTFDT = DateTimeFormatter.ofPattern("yyyyMMdd");
+		
+		
+	}
 	
 	//***********Devuelve el formato inicial de los JTextArea
 	public void  cambiaFoco2(JTextArea nombre, String comentario) {
@@ -171,9 +177,11 @@ public class BibliotecaView {
 		this.datos.add(tFIsbnP.getText());
 		this.datos.add(tFNumSP.getText());
 		String fechaAlta = tFFechaAlta.getText().replace("/", "");
-		this.datos.add(fechaAlta);
+		int ifechaAlta = Integer.parseInt(fechaAlta);
+		this.datos.add(ifechaAlta);
 		String fechaDevolucion = tFFechaDevolucion.getText().replace("/","");
-		this.datos.add(fechaDevolucion);
+		int ifechaDevolucion=Integer.parseInt(fechaDevolucion);
+		this.datos.add(ifechaDevolucion);
 		
 		int numero= Integer.parseInt(datos.get(0).toString());
 		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero);
