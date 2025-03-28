@@ -120,7 +120,7 @@ public class BibliotecaView {
 	
 	//***********Devuelve el formato inicial de los JTextArea
 	public void  cambiaFoco2(JTextArea nombre, String comentario) {
-		/*
+/*		
 		nombre.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -135,7 +135,7 @@ public class BibliotecaView {
 				if (text.isEmpty()) {
 					nombre.setText(comentario);
 		}
-	}); */
+	}); 	*/
 	}	
 
 	
@@ -157,7 +157,7 @@ public class BibliotecaView {
 					nombre.setText(comentario);
 			}
 		}
-	}); */
+	});		*/ 
 	}
 	
 	
@@ -205,6 +205,8 @@ public class BibliotecaView {
 	public BibliotecaView(BibliotecaController controlador) {		// inicializamos la biblioteca
 		initialize (controlador);
 	}
+	
+/***********************************************   INICIALIZE **/
 	
 	private void initialize(BibliotecaController controlador) {
 		
@@ -297,27 +299,28 @@ public class BibliotecaView {
 		btnBajaP.setFocusTraversalKeysEnabled(false);
 		btnBajaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
+		JCheckBox cBoxEscedidos = new JCheckBox("ESCEDIDOS");
+		cBoxEscedidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		
 		JButton btnBuscarP = new JButton("BUSCAR");
 		btnBuscarP.setFocusTraversalKeysEnabled(false);
 		btnBuscarP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrarTabla(modeloPrestamo);
 				
-				controller.BuscarPrestamo(tFNumSP.getText());
-			}
-		});
-		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-		JCheckBox cBoxEscedidos = new JCheckBox("ESCEDIDOS");
-		cBoxEscedidos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cBoxEscedidos.isSelected()==true) {
-					
+				int check;
+				if (cBoxEscedidos.isSelected()) {
+					check=1;
+				} else {
+					check=0;
 				}
+				
+				tFAvisosP.setText(String.valueOf(check));
+				controller.BuscarPrestamo(tFNumSP.getText(),tFIsbnP.getText(), tFNumSP.getText(),check);
 			}
 		});
-		cBoxEscedidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
+		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));		
 		
 		JLabel lblBuscarP = new JLabel("BUSQUEDA");
 		lblBuscarP.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -1102,5 +1105,10 @@ public class BibliotecaView {
 		this.modeloInventario.addRow(rowInventario);
 		this.tablaInventario.setModel(modeloInventario);
 	
+	}
+	public void avisoViewP(String s) {
+		// TODO Auto-generated method stub
+		tFAvisosP.setText(s);
+		
 	}
 }

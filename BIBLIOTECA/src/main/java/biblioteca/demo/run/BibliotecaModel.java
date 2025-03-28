@@ -8,8 +8,10 @@ public class BibliotecaModel {
 
 	Database db = new Database();
 	
+
 	
 	
+/*	
 	public List<Object[]> BuscarPrestamo(int s) {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
@@ -21,6 +23,15 @@ public class BibliotecaModel {
 				sql = "SELECT * FROM PRESTAMO WHERE SOCIO =?";
 				lista =db.executeQueryArray(sql, s);
 			}
+		return lista;
+	}
+*/	
+	public List<Object[]> BuscarPrestamo(String sql,int s) {
+		// TODO Auto-generated method stub
+		List<Object[]> lista = null;
+		
+		lista =db.executeQueryArray(sql, s);
+		
 		return lista;
 	}
 

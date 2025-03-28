@@ -15,7 +15,7 @@ INSERT INTO libro(isbn,titulo,autor,edicion,categoria) VALUES
 
 INSERT INTO prestamo(libro,socio,fechaPrestamo,fechaDevolucion) VALUES 
 (437622149,12000001,20250103,20240218),
-(416434725,99000001,20250305,20250305);
+(416434725,99000001,20250305,20250405);
 
 
 INSERT INTO socio(numSocio,fechaNac,nombreCompleto,trabajador,masInfo) VALUES

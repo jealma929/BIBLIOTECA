@@ -8,6 +8,11 @@ public class BibliotecaController {
 	private BibliotecaModel model;
 	private BibliotecaView view;
 	
+	public void avisoP(String s) {
+		
+		view.avisoViewP(s);
+	}
+	
 	public void setVistaModel( BibliotecaView v , BibliotecaModel m) {
 		this.model = m;
 		this.view = v;
@@ -18,11 +23,41 @@ public class BibliotecaController {
 	}
 	
 
-	public void BuscarPrestamo(String text) {
+	public void BuscarPrestamo(String text,String text1,String text2, int check) {
 		// TODO Auto-generated method stub
 		int i;
+		String campo="";
+		String restriccion="";
+		String sql="";
+        int intT=0;
+/*		if (text.isEmpty()) {
+			text="0";
+		}
 		int intT=Integer.parseInt(text);
-		List<Object[]> lista=model.BuscarPrestamo(intT);
+*/		
+//************************************************************************* 
+  		if (!text1.isEmpty()) {
+  			campo="WHERE ISBN =?";
+  			intT=Integer.parseInt(text1);
+  		} else {
+  			if (!text2.isEmpty()) {
+  				campo="WHERE SOCIO =?";
+  				intT=Integer.parseInt(text2);
+  			}
+  		} 		
+  		
+  		if (check==1) {
+  			restriccion=" AND FECHADEVOLUCION < CURDATE()";
+   		} else {
+   			restriccion="";
+   		}
+  		
+  		sql="SELECT * FROM PRESTAMO "+campo+restriccion;
+  		
+  		avisoP(sql);
+  
+ 
+		List<Object[]> lista=model.BuscarPrestamo(sql, intT);
 		
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaPrestamo(lista.get(i));
