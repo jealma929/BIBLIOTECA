@@ -36,7 +36,20 @@ public class BibliotecaController {
 		int intT=Integer.parseInt(text);
 */		
 //************************************************************************* 
-  		if (!text1.isEmpty()) {
+  		if (check==0) {
+  			if (!text1.isEmpty()) {
+  	  			campo="WHERE ISBN =?";
+  	  			intT=Integer.parseInt(text1);
+  			} else {
+  	  			if (!text2.isEmpty()) {
+  	  				campo="WHERE SOCIO =?";
+  	  				intT=Integer.parseInt(text2);
+  	  			} else {
+  	  				
+  	  			}
+  		}
+        
+        if (!text1.isEmpty()) {
   			campo="WHERE ISBN =?";
   			intT=Integer.parseInt(text1);
   		} else {
