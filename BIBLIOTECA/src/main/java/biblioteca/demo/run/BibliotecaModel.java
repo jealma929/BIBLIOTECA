@@ -6,6 +6,7 @@ import biblioteca.demo.util.Database;
 
 public class BibliotecaModel {
 
+	
 	Database db = new Database();
 	
 
@@ -26,11 +27,29 @@ public class BibliotecaModel {
 		return lista;
 	}
 */	
-	public List<Object[]> BuscarPrestamo(String sql,int s) {
+	
+	public List<Object[]> BuscarInt(String sql,Integer s) {
+		List<Object[]> lista =null;
+		lista =db.executeQueryArray(sql,s);
+		
+		return lista;
+	}
+	
+	public List<Object[]> BuscarStr(String sql,String s) {
+		List<Object[]> lista =null;
+		lista =db.executeQueryArray(sql,s);
+		
+		return lista;
+	}
+	
+	public List<Object[]> BuscarPrestamo(String sql,Integer s) {
 		// TODO Auto-generated method stub
 		List<Object[]> lista = null;
-		
-		lista =db.executeQueryArray(sql, s);
+		if (s==null) {
+			lista =db.executeQueryArray(sql);
+		} else {
+			lista =db.executeQueryArray(sql, s);
+		}	
 		
 		return lista;
 	}

@@ -97,7 +97,7 @@ public class BibliotecaView {
 	private JPanel prestamo;
 	
 
-	//*********** Devuelve la fecha en formato dd/MM/yyyycon incremento
+	//*********** Devuelve la fecha en formato dd/MM/yyyycon  con posible incremento
 	public static String asignaFecha (int i) {
 		LocalDate lD = LocalDate.now();
 		lD = lD.plusDays (i);
@@ -107,15 +107,11 @@ public class BibliotecaView {
 	}
 	//*********** Devuelve la fecha a un formato LocalDate 
 	public static String fechaLD (String fecha) {
-		DateTimeFormatter dTF = DateTimeFormatter.ofPattern("ddMMyyyy");
-		DateTimeFormatter dTFDT = DateTimeFormatter.ofPattern("yyyyMMdd");
+		DateTimeFormatter dTF = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter dTFDT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate lD = LocalDate.parse(fecha,dTF);
 		String slD = lD.format(dTFDT);
 		return slD;
-		
-		
-		
-		
 	}
 	
 	//***********Devuelve el formato inicial de los JTextArea
@@ -181,17 +177,12 @@ public class BibliotecaView {
 		
 		this.datos.add(tFIsbnP.getText());
 		this.datos.add(tFNumSP.getText());
+				
+		String fechaAlta = fechaLD(tFFechaAlta.getText());
+		this.datos.add(fechaAlta);
 		
-		String fechaAlta = tFFechaAlta.getText().replace("/", "");
-		
-		int ifechaAlta = Integer.parseInt(fechaLD(fechaAlta));
-		this.datos.add(ifechaAlta);
-		
-		String fechaDevolucion = tFFechaDevolucion.getText().replace("/","");
-		
-		int ifechaDevolucion=Integer.parseInt(fechaLD(fechaDevolucion));
-		this.datos.add(ifechaDevolucion);
-		
+		String fechaDevolucion= fechaLD(tFFechaDevolucion.getText());
+		this.datos.add(fechaDevolucion);
 		
 		int numero= Integer.parseInt(datos.get(0).toString());
 		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero);
