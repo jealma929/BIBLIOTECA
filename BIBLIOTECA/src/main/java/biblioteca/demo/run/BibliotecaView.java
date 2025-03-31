@@ -94,6 +94,7 @@ public class BibliotecaView {
 	
 	private BibliotecaController controller;
 	private JCheckBox cBoxTrabajador;
+	private JRadioButton rdbtnAdulto;
 	private JPanel prestamo;
 	
 
@@ -163,16 +164,14 @@ public class BibliotecaView {
 	
 		for (i=modelo.getRowCount()-1;i>=0;i--) {
 			modelo.removeRow(i);
-			
 		}
 			
 	}
 	
-	//*********** Gestiona los datos antes de pasarlos a controller ***********************
+	//*********** Gestiona los datos antes de pasarlos a controller(prestamos)*******************
 	private void cargarDatos() {
 		// TODO Auto-generated method stub
 	
-		
 		//this.datos = new ArrayList<Object>();
 		
 		this.datos.add(tFIsbnP.getText());
@@ -183,15 +182,56 @@ public class BibliotecaView {
 		
 		String fechaDevolucion= fechaLD(tFFechaDevolucion.getText());
 		this.datos.add(fechaDevolucion);
-		
+// ****************prueba		
 		int numero= Integer.parseInt(datos.get(0).toString());
 		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero);
 		
 		this.controller.guardaDatos(datos);
-		
-
 	}
-
+	
+	//*********** Gestiona los datos antes de pasarlos a controller(Inventario)*******************
+	private void cargarDatosI() {
+		// TODO Auto-generated method stub
+		
+		this.datos.add(tFIsbn.getText());
+		this.datos.add(tFTitulo.getText());
+		this.datos.add(tFAutor);
+		this.datos.add(tFEdicion.getText());
+		int categoria;
+		if (rdbtnAdulto.isSelected()) {
+			categoria=1;
+		}else {
+			categoria=0;
+		}
+	
+		this.controller.guardaDatosI(datos);
+	}
+	
+	//*********** Gestiona los datos antes de pasarlos a controller (Socios)
+	private void cargarDatosS() {
+		// TODO Auto-generated method stub
+		
+		this.datos.add(tFNumS.getText());
+						
+		String fechaNacimiento= fechaLD(tFFechaNacimiento.getText());
+		this.datos.add(tFFechaNacimiento);
+		
+		this.datos.add(tFNombreS.getText());
+		
+		int check;
+		if (cBoxTrabajador.isSelected()) {
+			check=1;
+		} else {
+			check=0;
+		}
+		this.datos.add(check);
+		this.datos.add(0);
+		this.datos.add(tAMAS.getText());
+		
+		this.controller.guardaDatosS(datos);
+	}
+	
+	
 	
 	public BibliotecaView(BibliotecaController controlador) {		// inicializamos la biblioteca
 		initialize (controlador);
@@ -276,8 +316,6 @@ public class BibliotecaView {
 				cargarDatos();
 			}
 		});
-	
-	
 		btnAltaP.setFocusTraversalKeysEnabled(false);
 		btnAltaP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
@@ -307,8 +345,8 @@ public class BibliotecaView {
 					check=0;
 				}
 				
-				tFAvisosP.setText(String.valueOf(check));
-				controller.BuscarPrestamo(tFNumSP.getText(),tFIsbnP.getText(), tFNumSP.getText(),check);
+/*AVISO*/		tFAvisosP.setText(String.valueOf(check));
+				controller.BuscarPrestamo("PRESTAMOS",tFIsbnP.getText(), tFNumSP.getText(),check);
 			}
 		});
 		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));		
@@ -518,7 +556,7 @@ public class BibliotecaView {
 		prestamo.setLayout(gl_prestamo);
 		
 		
-		/** SOCIOS comienza el panel de socios **/
+/********************** SOCIOS comienza el panel de socios **/
 		
 		modeloSocios = new DefaultTableModel(new Object[][] {
 				},
@@ -611,6 +649,7 @@ public class BibliotecaView {
 		btnAltaS.setFocusTraversalKeysEnabled(false);
 		btnAltaS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cargarDatosS();		
 			}
 		});
 		btnAltaS.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -624,7 +663,15 @@ public class BibliotecaView {
 		btnBuscarS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrarTabla(modeloSocios);
-				controller.BuscarSocio(tFNombreS.getText());
+				int check;
+				if (cBoxTrabajador.isSelected()) {
+					check=1;
+				} else {
+					check=0;
+				}
+				
+/*AVISO*/		tFAvisosS.setText(String.valueOf(check));
+				controller.BuscarPrestamo("SOCIOS",tFIsbnP.getText(), tFNumSP.getText(),check);
 			}
 		});
 		btnBuscarS.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -670,19 +717,6 @@ public class BibliotecaView {
 		scrollSocios.setBorder(BorderFactory.createLoweredBevelBorder());
 		
 		cBoxTrabajador = new JCheckBox("Trabajador");
-		/**String trabajador;
-		cBoxTrabajador.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				if (cBoxTrabajador.isSelected()) {
-					trabajador = "Trabajador";
-					tFAvisosS.setText("1"); //prueba de funcionamiento 
-				}
-				else {
-					trabajador = "";
-					tFAvisosS.setText("0"); // prueba de funcionamiento
-				}
-			}
-		});**/
 		
 		tAMAS = new JTextArea();
 		tAMAS.setFocusTraversalKeysEnabled(false);
@@ -871,7 +905,7 @@ public class BibliotecaView {
 		tFAutor.setText("< Introduzca el Autor >");
 		tFAutor.setColumns(10);
 		cambiaFoco(tFAutor,"< Introduzca el Autor >");
-		
+
 		JLabel lblAltaI = new JLabel("ALTA");
 		lblAltaI.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
@@ -915,7 +949,7 @@ public class BibliotecaView {
 		
 		JRadioButton rdbtnInfantil = new JRadioButton("Infantil");
 		grupoBoton_2.add(rdbtnInfantil);
-		
+				
 		JRadioButton rdbtnAdulto = new JRadioButton("Adulto");
 		rdbtnAdulto.setSelected(true);
 		rdbtnAdulto.setAlignmentY(0.0f);
@@ -939,6 +973,11 @@ public class BibliotecaView {
 		JButton btnAltaI = new JButton("ALTA");
 		btnAltaI.setFocusTraversalKeysEnabled(false);
 		btnAltaI.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAltaI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargarDatosI();		
+			}
+		});
 		
 		JLabel lblModI = new JLabel("MODIFICAR");
 		lblModI.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -1097,9 +1136,14 @@ public class BibliotecaView {
 		this.tablaInventario.setModel(modeloInventario);
 	
 	}
-	public void avisoViewP(String s) {
+	public void avisoView(String s, String tabla) {
 		// TODO Auto-generated method stub
-		tFAvisosP.setText(s);
-		
+		if (tabla=="prestamo") {
+			tFAvisosP.setText(s);
+		} else if (tabla=="socio"){
+			tFAvisosS.setText(s);
+			} else {
+				tFAvisosI.setText(s);
+			}		
 	}
 }

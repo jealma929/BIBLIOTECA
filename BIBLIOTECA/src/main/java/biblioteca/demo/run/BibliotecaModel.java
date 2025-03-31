@@ -30,7 +30,11 @@ public class BibliotecaModel {
 	
 	public List<Object[]> BuscarInt(String sql,Integer s) {
 		List<Object[]> lista =null;
-		lista =db.executeQueryArray(sql,s);
+		if (s==null) {
+			lista =db.executeQueryArray(sql);
+		} else {
+			lista =db.executeQueryArray(sql, s);
+		}
 		
 		return lista;
 	}
@@ -54,34 +58,33 @@ public class BibliotecaModel {
 		return lista;
 	}
 
-	public List<Object[]> BuscarSocio(String s) {
+/*	public List<Object[]> BuscarSocio(String sql, Integer s) {
 		// TODO Auto-generated method stub
-		List<Object[]> lista = null;
-		String sql;
-			if (s.equals("*")) {
-				sql= "SELECT * FROM SOCIO";
-				lista =db.executeQueryArray(sql);
-			} else {
-				sql = "SELECT * FROM SOCIO WHERE NOMBRECOMPLETO =?";
-				lista =db.executeQueryArray(sql, s);
-			}	
-		return lista;
-	}
-
-
-	public List<Object[]> BuscaInventario(String text) {
 		// TODO Auto-generated method stub
-		List<Object[]> lista = null;
-		String sql;
-			if (text.equals("*")) {
-				sql= "SELECT * FROM LIBRO";
-				lista =db.executeQueryArray(sql);
-			} else {
-				sql = "SELECT * FROM LIBRO WHERE TITULO =?";
-				lista =db.executeQueryArray(sql, text);			//executeQuery se utiliza cuando la base de datos ha de responder
+				List<Object[]> lista = null;
+				if (s==null) {
+					lista =db.executeQueryArray(sql);
+				} else {
+					lista =db.executeQueryArray(sql, s);
+				}	
+				
+				return lista;
 			}
-		return lista;
-	}
+
+
+	public List<Object[]> BuscaInventario(String sql, Integer s) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+				List<Object[]> lista = null;
+				if (s==null) {
+					lista =db.executeQueryArray(sql);
+				} else {
+					lista =db.executeQueryArray(sql, s);
+				}	
+				
+				return lista;
+			}
+	}*/
 
 	public void guardarDatos(List<Object> datos) {
 		// TODO Auto-generated method stub

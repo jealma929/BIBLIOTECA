@@ -10,11 +10,11 @@ public class BibliotecaController {
 	
 	private BibliotecaModel model;
 	private BibliotecaView view;
-	private List<Object[]> resultado;
+	private List<Object[]> lista;
 	
-	public void avisoP(String s) {
-		
-		view.avisoViewP(s);
+	public void aviso(String s, String tabla) {
+
+		view.avisoView(s,tabla);	
 	}
 	
 	public void setVistaModel( BibliotecaView v , BibliotecaModel m) {
@@ -30,41 +30,28 @@ public class BibliotecaController {
 	public void BuscarPrestamo(String text,String text1,String text2, int check) {
 		// TODO Auto-generated method stub
 		int i;
-<<<<<<< HEAD
+		String tabla=text;
 		String campo="";
-		String restriccion="";
-		String sql="";
-        int intT=0;
-/*		if (text.isEmpty()) {
-			text="0";
-		}
-		int intT=Integer.parseInt(text);
-*/		
+		String sql;
+        Integer intT=null;		
 //************************************************************************* 
-  		if (check==0) {
+  		String preg1="";
+		String preg2="";
+		if (check==0) {
   			if (!text1.isEmpty()) {
-  	  			campo="WHERE ISBN =?";
+  	  			preg1="WHERE ISBN =?";
   	  			intT=Integer.parseInt(text1);
   			} else {
   	  			if (!text2.isEmpty()) {
-  	  				campo="WHERE SOCIO =?";
+  	  				preg2="WHERE SOCIO =?";
   	  				intT=Integer.parseInt(text2);
-  	  			} else {
-  	  				
   	  			}
+  			}
   		}
-        
-        if (!text1.isEmpty()) {
-  			campo="WHERE ISBN =?";
-=======
-		String preg1="";
-		String preg2="";
-		String sql;
-        Integer intT=null;
+  		
 
   		if (!text1.isEmpty()) {
   			preg1=" WHERE LIBRO =?";
->>>>>>> branch 'master' of https://github.com/jealma929/BIBLIOTECA.git
   			intT=Integer.parseInt(text1);
   			} else {
   				if (!text2.isEmpty()) {
@@ -80,12 +67,12 @@ public class BibliotecaController {
   					}
   			}
   		
-  		sql="SELECT * FROM PRESTAMO"+preg1+preg2;
-/*AVISO */ 		
-  		avisoP(sql);
+  		sql="SELECT * FROM "+tabla+preg1+preg2;
+		
+/*AVISO*/aviso(sql,text);
   
  
-		List<Object[]> lista=model.BuscarPrestamo(sql, intT);
+		List<Object[]> lista=model.BuscarInt(sql, intT);
 		
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaPrestamo(lista.get(i));
@@ -94,10 +81,53 @@ public class BibliotecaController {
 		
 
 
-	public void BuscarSocio(String text) {
+	public void BuscarSocio(String text,String text1,String text2,String text3, int check) {
 		// TODO Auto-generated method stub
 		int i;
-		List<Object[]> lista=model.BuscarSocio(text);
+		String tabla=text;
+		String sql;
+	    Integer intT=null;	
+	    String StrT="";
+	//*************************************************************************  		
+	    String preg1="";
+		String preg2="";
+		if (check==1) {
+			sql=" WHERE TRABAJADOR= ?";
+			intT=check;
+		} else {
+			if (!text2.isEmpty()) {
+				preg1=" WHERE FECHANAC =?";
+				StrT=text2;
+			} else {
+				if (!text3.isEmpty()) {
+					preg1=" WHERE NOMBRECOMPLETO =?";
+					StrT=text3;
+				} else {
+					preg1=" WHERE NUMSOCIO =?";
+					if (!text1.isEmpty()) {
+						intT=Integer.parseInt(text1);
+					} else {
+						intT=-1;
+				}
+				}
+			}
+		}
+	  		
+	  	sql="SELECT * FROM "+tabla+preg1+preg2;
+			
+/*AVISO*/aviso(sql,text);
+
+		if (intT!=null) {
+			if (intT==-1) {
+				intT=null;
+			} else {
+				List<Object[]> lista=model.BuscarInt(sql, intT);
+			}
+		} else {
+			if (!StrT.isEmpty()) {
+				List<Object[]> lista=model.BuscarStr(sql, StrT);
+			}
+		}
 		
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaSocio(lista.get(i));
@@ -105,21 +135,67 @@ public class BibliotecaController {
 		
 	}
 	
-	public void BuscarInventario(String text) {
+	
+	public void BuscarInventario(String text, String text1,String text2,String text3, int check) {
 		// TODO Auto-generated method stub
 		int i;
+		String tabla=text;
+		String campo="";
+		String sql;
+		Integer intT=null;	
+		String StrT="";
+		//*************************************************************************  		
+	    String preg1="";
+		String preg2="";
+		if (!text2.isEmpty()) {
+			preg1=" WHERE TUTULO =?";
+				StrT=text2;
+			} else {
+				if (!text3.isEmpty()) {
+					preg1=" WHERE AUTOR =?";
+					StrT=text3;
+				} else {
+					if (!text1.isEmpty()) {
+						preg1=" WHERE NUMSOCIO =?";
+						intT=Integer.parseInt(text1);
+					} else {
+						preg1=" WHERE CATEGORIA =?";
+						intT=check;
+						} 
+				}
+		}
 		
-		List<Object[]> lista=model.BuscaInventario(text);		
+		sql="SELECT * FROM "+tabla+preg1+preg2;
+				
+	/*AVISO*/aviso(sql,text);
+
+		if (intT!=null) {
+			if (intT==-1) {
+				intT=null;
+			} else {
+				List<Object[]> lista=model.BuscarInt(sql, intT);
+			}
+		} else {
+			if (!StrT.isEmpty()) {
+				List<Object[]> lista=model.BuscarStr(sql, StrT);
+			}
+		}
+			
+		for (i=0; i<lista.size(); i++) {
+			view.rellenatablaSocio(lista.get(i));
+		}
+			
 		for (i=0; i<lista.size(); i++) {
 			view.rellenatablaInventario(lista.get(i));
 		}
-		
 	}
+		
+	
 
 
 	public void guardaDatos(List<Object> datos) {
 		// TODO Auto-generated method stub
-		String sql;
+/*		String sql;
 		//priemra condicion del prestamo --> EL LIBRO NO ESTA PRESTADO
 		sql="SELECT libro FROM PRESTAMO WHERE LIBRO = ?";
 		this.resultado=model.BuscarInt(sql,(Integer) datos.get(0));
@@ -149,21 +225,27 @@ public class BibliotecaController {
 			if(edad(String.valueOf(datos.get(1)))<18) {
 				view.avisoViewP ("Libro no apto por edad");
 			}
-		}
-		
-		
-		
-				
-		model.guardarDatos(datos);
+		}				
+		model.guardarDatos(datos);*/
 	}
 
 		public int edad(String socio) {
 			String sql="SELECT fechaNac FROM SOCIO WHERE NUMSOCIO = ?";
-			this.resultado=model.BuscarStr(sql, socio);
+			this.lista=model.BuscarStr(sql, socio);
 			LocalDate fNc= LocalDate.parse(resultado.get(0));
 			Period old =Period.between(fNc, LocalDate.now());
 			int years=old.getYears();
 			return years;
+		}
+
+		public void guardaDatosI(List<Object> datos) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void guardaDatosS(List<Object> datos) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 }
