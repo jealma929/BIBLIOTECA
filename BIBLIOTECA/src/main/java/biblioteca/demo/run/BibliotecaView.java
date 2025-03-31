@@ -344,9 +344,10 @@ public class BibliotecaView {
 				} else {
 					check=0;
 				}
-				
-/*AVISO*/		tFAvisosP.setText(String.valueOf(check));
-				controller.BuscarPrestamo("PRESTAMOS",tFIsbnP.getText(), tFNumSP.getText(),check);
+				String aviso="PRESTAMOS"+tFIsbnP.getText()+tFNumSP.getText()+check;
+				avisoView (aviso,"prestamo");;
+/*AVISO*/		//tFAvisosP.setText(String.valueOf(check)+ "PRESTAMOS "+tFIsbnP.getText()+ tFNumSP.getText());
+				controller.BuscarPrestamo("PRESTAMO",tFIsbnP.getText(),tFNumSP.getText(),check);
 			}
 		});
 		btnBuscarP.setFont(new Font("Tahoma", Font.PLAIN, 14));		

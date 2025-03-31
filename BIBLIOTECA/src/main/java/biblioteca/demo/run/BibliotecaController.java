@@ -12,11 +12,6 @@ public class BibliotecaController {
 	private BibliotecaView view;
 	private List<Object[]> lista;
 	
-	public void aviso(String s, String tabla) {
-
-		view.avisoView(s,tabla);	
-	}
-	
 	public void setVistaModel( BibliotecaView v , BibliotecaModel m) {
 		this.model = m;
 		this.view = v;
@@ -29,6 +24,8 @@ public class BibliotecaController {
 
 	public void BuscarPrestamo(String text,String text1,String text2, int check) {
 		// TODO Auto-generated method stub
+		String prueba=text1+text2+check;
+/*AVISO*/aviso(prueba,text);		
 		int i;
 		String tabla=text;
 		String campo="";
@@ -48,17 +45,6 @@ public class BibliotecaController {
   	  			}
   			}
   		}
-  		
-
-  		if (!text1.isEmpty()) {
-  			preg1=" WHERE LIBRO =?";
-  			intT=Integer.parseInt(text1);
-  			} else {
-  				if (!text2.isEmpty()) {
-  					preg1=" WHERE SOCIO =?";
-  					intT=Integer.parseInt(text2);
-  					}
-  			}
   		if (check==1) {
   			if (preg1.isEmpty()) {
   				preg1=" WHERE FECHADEVOLUCION < DATE('now')";
@@ -246,6 +232,11 @@ public class BibliotecaController {
 		public void guardaDatosS(List<Object> datos) {
 			// TODO Auto-generated method stub
 			
+		}
+	/**************** envia Avisos a JtextField correspondiente */	
+		public void aviso(String s, String tabla) {
+
+			view.avisoView(s,tabla);	
 		}
 		
 }
