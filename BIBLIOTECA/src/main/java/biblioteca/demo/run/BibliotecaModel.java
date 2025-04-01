@@ -27,7 +27,7 @@ public class BibliotecaModel {
 		return lista;
 	}
 */	
-	
+/*******************busqueda generica de un campo int */	
 	public List<Object[]> BuscarInt(String sql,Integer s) {
 		List<Object[]> lista =null;
 		if (s==null) {
@@ -38,7 +38,7 @@ public class BibliotecaModel {
 		
 		return lista;
 	}
-	
+/******************busqueda generica de un campo String */	
 	public List<Object[]> BuscarStr(String sql,String s) {
 		List<Object[]> lista =null;
 		lista =db.executeQueryArray(sql,s);

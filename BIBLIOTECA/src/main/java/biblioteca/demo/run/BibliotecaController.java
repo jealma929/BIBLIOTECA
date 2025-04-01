@@ -31,16 +31,15 @@ public class BibliotecaController {
 		String campo="";
 		String sql;
         Integer intT=null;		
-//************************************************************************* 
   		String preg1="";
 		String preg2="";
 		if (check==0) {
   			if (!text1.isEmpty()) {
-  	  			preg1="WHERE ISBN =?";
+  	  			preg1=" WHERE LIBRO =?";
   	  			intT=Integer.parseInt(text1);
   			} else {
   	  			if (!text2.isEmpty()) {
-  	  				preg2="WHERE SOCIO =?";
+  	  				preg2=" WHERE SOCIO =?";
   	  				intT=Integer.parseInt(text2);
   	  			}
   			}
@@ -73,8 +72,7 @@ public class BibliotecaController {
 		String tabla=text;
 		String sql;
 	    Integer intT=null;	
-	    String StrT="";
-	//*************************************************************************  		
+	    String StrT="";	
 	    String preg1="";
 		String preg2="";
 		if (check==1) {
@@ -181,44 +179,50 @@ public class BibliotecaController {
 
 	public void guardaDatos(List<Object> datos) {
 		// TODO Auto-generated method stub
-/*		String sql;
+/* condiciones del alta de prestamos */
+		
+	String sql;
+	
 		//priemra condicion del prestamo --> EL LIBRO NO ESTA PRESTADO
 		sql="SELECT libro FROM PRESTAMO WHERE LIBRO = ?";
-		this.resultado=model.BuscarInt(sql,(Integer) datos.get(0));
-		if (resultado.size()!=0) {
-			resultado =null;
-			view.avisoViewP ("El libro esta prestado");
+		this.lista=model.BuscarInt(sql,(Integer) datos.get(0));
+		if (lista.size()!=0) {
+			lista =null;
+			view.avisoView ("El libro esta prestado","prestamo");
 		}
 		//segunda condicion del prestamo --> El socio tiene tres prestamos
 		sql="SELECT socio COUNT as cantidad FROM PRESTAMO WHERE SOCIO =?";
-		this.model=model.BuscarInt(sql,(Integer) datos.get(1));
-		if (resultado.size()==3) {
-			resultado = null;
-			view.avisoViewP ("Limite de prestamos alcanzado");
+		this.lista=model.BuscarInt(sql,(Integer) datos.get(1));
+		if (lista.size()==3) {
+			lista = null;
+			view.avisoView ("Limite de prestamos alcanzado","prestamo");
 		}
 		//tercera condicion del prestamo --> El socio tiene una sancion
 		sql="SELECT sancion FROM SOCIO WHERE NUMSOCIO= ?";
-		this.resultado=model.BuscarStr(sql,(Integer) datos.get(1));
-		if ((Integer) resultado.get(0) ==1) {
-			view.avisoViewP ("Esta sancionado hasta");
+		this.lista=model.BuscarStr(sql,(String) datos.get(1));
+		if ((Integer) lista.get(0) ==1) {
+			lista = null;
+			view.avisoView ("Esta sancionado hasta","prestamo");
 		}
 		
 		//cuarta condicion del prestamo --> El socio no es adulto para sacar el libro
 				sql="SELECT categoria FROM LIBRO WHERE LIBRO =?";
-		resultado=model.BuscarInt(sql,(Integer) datos.get(0));
-		if((Integer) resultado.get(0) ==1) {
-			resultado=null;
+		lista=model.BuscarInt(sql,(Integer) datos.get(0));
+		if((Integer) lista.get(0) ==1) {
+			lista=null;
 			if(edad(String.valueOf(datos.get(1)))<18) {
-				view.avisoViewP ("Libro no apto por edad");
+				view.avisoView ("Libro no apto por edad","prestamo");
 			}
-		}				
-		model.guardarDatos(datos);*/
+		}
+/* fin de las condiciones */				
+		
+		model.guardarDatos(datos);
 	}
 
 		public int edad(String socio) {
 			String sql="SELECT fechaNac FROM SOCIO WHERE NUMSOCIO = ?";
 			this.lista=model.BuscarStr(sql, socio);
-			LocalDate fNc= LocalDate.parse(resultado.get(0));
+			LocalDate fNc= LocalDate.parse(lista.get(0));
 			Period old =Period.between(fNc, LocalDate.now());
 			int years=old.getYears();
 			return years;

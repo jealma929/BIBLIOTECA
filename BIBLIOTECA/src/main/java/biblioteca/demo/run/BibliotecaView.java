@@ -184,7 +184,8 @@ public class BibliotecaView {
 		this.datos.add(fechaDevolucion);
 // ****************prueba		
 		int numero= Integer.parseInt(datos.get(0).toString());
-		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero);
+		int numero2= Integer.parseInt(datos.get(1).toString());
+		tFAvisosP.setText(fechaAlta+" "+fechaDevolucion+" "+numero+numero2);
 		
 		this.controller.guardaDatos(datos);
 	}
